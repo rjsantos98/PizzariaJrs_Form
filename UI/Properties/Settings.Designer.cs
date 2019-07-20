@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PizzariaJuniors.Properties
+namespace UI.Properties
 {
 
 

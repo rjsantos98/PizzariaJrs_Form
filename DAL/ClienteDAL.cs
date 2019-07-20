@@ -59,7 +59,7 @@ namespace DAL
         }
         public List<Cliente> ConsultarClientes(string telefone)
         {
-            string select = @"Select NM_PRODUTO, CD_TELEFONE, CD_CEP, NM_BAIRRO,
+            string select = @"Select NM_CLIENTE, CD_TELEFONE, CD_CEP, NM_BAIRRO,
                             NM_ENDERECO, CD_NUMERO, CD_COMPLEMENTO 
                             FROM CLIENTE WHERE CD_TELEFONE like '%" + telefone + "%'";
             List<Cliente> clientes = new List<Cliente>();

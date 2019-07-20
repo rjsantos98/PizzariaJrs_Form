@@ -115,6 +115,7 @@
             this.txtConsTel.Size = new System.Drawing.Size(151, 26);
             this.txtConsTel.TabIndex = 13;
             this.txtConsTel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtConsTel.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // btnAlterar
             // 
@@ -254,7 +255,7 @@
             this.gpPedidos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.gpPedidos.Font = new System.Drawing.Font("Arial", 12F);
             this.gpPedidos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.gpPedidos.Location = new System.Drawing.Point(12, 12);
+            this.gpPedidos.Location = new System.Drawing.Point(26, 81);
             this.gpPedidos.Name = "gpPedidos";
             this.gpPedidos.Size = new System.Drawing.Size(746, 350);
             this.gpPedidos.TabIndex = 20;
@@ -276,7 +277,7 @@
             this.gpProdutosPedidos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.gpProdutosPedidos.Font = new System.Drawing.Font("Arial", 12F);
             this.gpProdutosPedidos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.gpProdutosPedidos.Location = new System.Drawing.Point(0, 0);
+            this.gpProdutosPedidos.Location = new System.Drawing.Point(6, 69);
             this.gpProdutosPedidos.Name = "gpProdutosPedidos";
             this.gpProdutosPedidos.Size = new System.Drawing.Size(746, 237);
             this.gpProdutosPedidos.TabIndex = 49;
@@ -576,6 +577,7 @@
             this.txtTelefonePedido.Name = "txtTelefonePedido";
             this.txtTelefonePedido.Size = new System.Drawing.Size(138, 26);
             this.txtTelefonePedido.TabIndex = 2;
+            this.txtTelefonePedido.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // lblTelPedido
             // 

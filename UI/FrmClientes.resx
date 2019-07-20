@@ -161,30 +161,6 @@
         0Vzs7hoRBQX/eET+Aoehg33LTptvAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="btnConsultar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAIGNIUk0AAHolAACAgwAA+f8AAIDoAABS
-        CAABFVgAADqXAAAXb9daH5AAAAAJcEhZcwAACxMAAAsTAQCanBgAAAQuSURBVDhPdZV7TNNXFMcPqIvC
-        ROiDgm15aDT7ZzHZO5pl2es/N0PCsglVVOqEqVGE4RoBUShSWlrRQoIYmExkA5RlZOqGZuMPjWQzGaOF
-        Hy3QomI1LMpjxCUSvjv3x2O8dpOT382553zu797zuETAlPw5SeScILo0SstaHi5XXBxMiawYaNDZfJLe
-        4h0WIuZCJ9aEjbCVfYTvDGd24mapmqTVlUPJOrvHF3/Sg7gCCbriHuhKvFPCc6ETa8JG2Aof2XcR0ANS
-        FgSc6wu7EGueA/kfETbCVvgI3/+AV58StQ2ToolhJhf0Ft7d2gu91Yuwgh4E5XTjheMSooq9iGHdXKiw
-        FT7CVzBkFn02SCHGwYT15k7oSnlnWy8iT/GW2W7El/Zia10Am6vugY51YUVet6ybCxU+wlcwBIuC2nuD
-        tU7vSGwh71jigcbSx7Au5N38C3NH+yPwuhfLGBzHm86FCl/BECx6sfmZYV2+G1pLD2LsAwzrRuGNBzKk
-        /PIv2JJqQ1JuNTAxhgdjk1iV14XwJe5YMASL1A5fS7y5G3q7H6tLBrH20BVGTeD81TsgvQG05Qhowx7E
-        GYpZP4miW6OgL12LgPFFEgSLtDavX2/tR4xzCJRUi49NlfLfvWQ8DdqcAUViIcI+MYNeTsPDgX64RjmU
-        WS5oFwBFgLS2Xj/pbb5x/dnH0GReA71vwqtH+Hg8kixNoI17sSaxAPRuNuitw/h7+Anqpef8h+55MFk4
-        Azj5xynmdGA86mgrlEkOhBnKQR+a4b4/FZCNOx2gTftBbx5C9fV2WbfJ6QNluhC3MNozwKhjbX5VSiVU
-        xhpE7q3Bim12qLaXwffoqQy453+MiecT8lyMxs4RBIsUyu2eB509cvhXP7ZEp9ZCnX4J6s8vQLPva9BW
-        G1Yl2mGq/RWtnQOoaf0Dr+92oPm2W4be7B8HmTiqJyTETif7bFBCjv9k0KV9B/X+BqjTBLRWhq7c7uQ7
-        5ft7J5cjbQK9lsHfTFz/3StDu4b+QfhJCQozVxYDZ9OGTviCNVltI9EHvp0HVRmrodp9Doqd5VAYyqDe
-        wVH/IIehGbhztwMdfM2KQg+URdxE+Dub2JReSSuzqxL0+VegSW9G5IHGRVBlSgWUhjNQJ9tBbx9E6J5a
-        RFgHoSriKrEvKD165RbRG24K29VZrj9aB83BpimofKffTEOroNxxFuEJ+Yg6/D1UpQGoivsQy6UqmkPE
-        vOZAouWwvDdJay7cdurSmhD9RSND+fjp9VDvY2jqeSg+tUKT0SIXgK7Uz/UrYR23L8Wi9jUD3PaM6PIT
-        Csm/m6zJ/sGnNdZjrfEiIhkojqzJuoaYsgDiT/Vxg+2B1uHxhZ6bbrCupYAfjRHVBYjOSBRk/W15qKUj
-        JTzn5wZVer0UnX1jmGHDOsd9SV3ha4jgJyB4yScA9C/cF5ZhIrNSBQAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="btnAlterar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAIGNIUk0AAHolAACAgwAA+f8AAIDoAABS

@@ -22,9 +22,9 @@ namespace BLL
             pedidoDAL.SalvarPedido(pedido);
         }
 
-        public List<Pedido> ConsultarPedidos(string telefone)
+        public List<Pedido> ConsultarPedidos(Pedido pedido)
         {
-            return pedidoDAL.ConsultarPedidos(telefone);
+            return pedidoDAL.ConsultarPedidos(pedido);
         }
 
         public void AlterarPedido(Pedido pedido)

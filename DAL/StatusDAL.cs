@@ -36,7 +36,7 @@ namespace DAL
         public List<Status> ConsultarStatus(string nome)
         {
             string select = @"SELECT ID_STATUS, NM_STATUS FROM STATUS_PEDIDO
-                                WHERE NM_STATUS LIKE '%" + nome + "%'";
+                                WHERE NM_STATUS = '" + nome + "'";
 
             List<Status> liststatus = new List<Status>();
 

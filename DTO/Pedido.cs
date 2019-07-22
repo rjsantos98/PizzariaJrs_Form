@@ -15,7 +15,18 @@ namespace DTO
         public DateTime DataEntregue { get; set; }
         public Status StatusPedido { get; set; }
         public double ValorTotal { get; set; }
+        public List<ProdutoPedido> produtoPedidos;
 
-        public List<ProdutoPedido> produtoPedidos = new List<ProdutoPedido>();
+        public Pedido()
+        {
+            Cliente = new Cliente{ };
+            StatusPedido = new Status { };
+            produtoPedidos = new List<ProdutoPedido>();
+        }
+
+        public override string ToString()
+        {
+            return ID.ToString();
+        }
     }
 }

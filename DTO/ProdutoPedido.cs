@@ -12,5 +12,11 @@ namespace DTO
         public Produto Produto { get; set; }
         public int Quantidade { get; set; }
         public double Valor { get; set; }
+
+        public ProdutoPedido()
+        {
+            Pedido = new Pedido { };
+            Produto = new Produto { };
+        }
     }
 }

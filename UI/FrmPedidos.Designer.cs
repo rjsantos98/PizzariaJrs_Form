@@ -47,7 +47,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.dgvProdutosPedidos = new System.Windows.Forms.DataGridView();
             this.lblListaProdutos = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.CancelarProdutos = new System.Windows.Forms.Button();
             this.btnSalvarProduto = new System.Windows.Forms.Button();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
@@ -87,7 +86,7 @@
             this.lblHorario.BackColor = System.Drawing.Color.Transparent;
             this.lblHorario.Font = new System.Drawing.Font("MV Boli", 12F);
             this.lblHorario.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblHorario.Location = new System.Drawing.Point(666, 9);
+            this.lblHorario.Location = new System.Drawing.Point(876, 9);
             this.lblHorario.Name = "lblHorario";
             this.lblHorario.Size = new System.Drawing.Size(0, 21);
             this.lblHorario.TabIndex = 0;
@@ -99,7 +98,7 @@
             this.lblData.BackColor = System.Drawing.Color.Transparent;
             this.lblData.Font = new System.Drawing.Font("MV Boli", 12F);
             this.lblData.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblData.Location = new System.Drawing.Point(546, 9);
+            this.lblData.Location = new System.Drawing.Point(756, 9);
             this.lblData.Name = "lblData";
             this.lblData.Size = new System.Drawing.Size(0, 21);
             this.lblData.TabIndex = 1;
@@ -109,7 +108,7 @@
             this.txtConsTel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtConsTel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtConsTel.Font = new System.Drawing.Font("Arial", 12F);
-            this.txtConsTel.Location = new System.Drawing.Point(36, 49);
+            this.txtConsTel.Location = new System.Drawing.Point(141, 49);
             this.txtConsTel.Mask = "(99)99999-9999";
             this.txtConsTel.Name = "txtConsTel";
             this.txtConsTel.Size = new System.Drawing.Size(151, 26);
@@ -127,13 +126,14 @@
             this.btnAlterar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAlterar.Image = ((System.Drawing.Image)(resources.GetObject("btnAlterar.Image")));
             this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAlterar.Location = new System.Drawing.Point(491, 49);
+            this.btnAlterar.Location = new System.Drawing.Point(596, 49);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(111, 26);
             this.btnAlterar.TabIndex = 19;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAlterar.UseVisualStyleBackColor = false;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnCadastrar
             // 
@@ -145,7 +145,7 @@
             this.btnCadastrar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnCadastrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCadastrar.Image")));
             this.btnCadastrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCadastrar.Location = new System.Drawing.Point(350, 49);
+            this.btnCadastrar.Location = new System.Drawing.Point(455, 49);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(111, 26);
             this.btnCadastrar.TabIndex = 18;
@@ -164,7 +164,7 @@
             this.btnExcluir.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnExcluir.Image = ((System.Drawing.Image)(resources.GetObject("btnExcluir.Image")));
             this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluir.Location = new System.Drawing.Point(628, 49);
+            this.btnExcluir.Location = new System.Drawing.Point(733, 49);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(111, 26);
             this.btnExcluir.TabIndex = 17;
@@ -186,8 +186,9 @@
             this.dgvPedidos.Location = new System.Drawing.Point(36, 94);
             this.dgvPedidos.Name = "dgvPedidos";
             this.dgvPedidos.ReadOnly = true;
-            this.dgvPedidos.Size = new System.Drawing.Size(703, 276);
+            this.dgvPedidos.Size = new System.Drawing.Size(913, 276);
             this.dgvPedidos.TabIndex = 16;
+            this.dgvPedidos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SelecionarPedido);
             // 
             // btnConsultar
             // 
@@ -199,7 +200,7 @@
             this.btnConsultar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnConsultar.Image = ((System.Drawing.Image)(resources.GetObject("btnConsultar.Image")));
             this.btnConsultar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnConsultar.Location = new System.Drawing.Point(213, 49);
+            this.btnConsultar.Location = new System.Drawing.Point(318, 49);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(111, 26);
             this.btnConsultar.TabIndex = 15;
@@ -214,7 +215,7 @@
             this.lblConsultTel.BackColor = System.Drawing.Color.Transparent;
             this.lblConsultTel.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblConsultTel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblConsultTel.Location = new System.Drawing.Point(32, 28);
+            this.lblConsultTel.Location = new System.Drawing.Point(137, 28);
             this.lblConsultTel.Name = "lblConsultTel";
             this.lblConsultTel.Size = new System.Drawing.Size(155, 21);
             this.lblConsultTel.TabIndex = 14;
@@ -228,6 +229,8 @@
             // 
             // gpPedidos
             // 
+            this.gpPedidos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gpPedidos.BackColor = System.Drawing.Color.White;
             this.gpPedidos.Controls.Add(this.gpProdutosPedidos);
             this.gpPedidos.Controls.Add(this.cmbStatus);
@@ -255,9 +258,9 @@
             this.gpPedidos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.gpPedidos.Font = new System.Drawing.Font("Arial", 12F);
             this.gpPedidos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.gpPedidos.Location = new System.Drawing.Point(26, 81);
+            this.gpPedidos.Location = new System.Drawing.Point(25, 33);
             this.gpPedidos.Name = "gpPedidos";
-            this.gpPedidos.Size = new System.Drawing.Size(746, 350);
+            this.gpPedidos.Size = new System.Drawing.Size(943, 350);
             this.gpPedidos.TabIndex = 20;
             this.gpPedidos.TabStop = false;
             this.gpPedidos.Text = " Cadastrar Pedido";
@@ -271,15 +274,14 @@
             this.gpProdutosPedidos.Controls.Add(this.label6);
             this.gpProdutosPedidos.Controls.Add(this.dgvProdutosPedidos);
             this.gpProdutosPedidos.Controls.Add(this.lblListaProdutos);
-            this.gpProdutosPedidos.Controls.Add(this.textBox5);
             this.gpProdutosPedidos.Controls.Add(this.CancelarProdutos);
             this.gpProdutosPedidos.Controls.Add(this.btnSalvarProduto);
             this.gpProdutosPedidos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.gpProdutosPedidos.Font = new System.Drawing.Font("Arial", 12F);
             this.gpProdutosPedidos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.gpProdutosPedidos.Location = new System.Drawing.Point(6, 69);
+            this.gpProdutosPedidos.Location = new System.Drawing.Point(27, 16);
             this.gpProdutosPedidos.Name = "gpProdutosPedidos";
-            this.gpProdutosPedidos.Size = new System.Drawing.Size(746, 237);
+            this.gpProdutosPedidos.Size = new System.Drawing.Size(888, 321);
             this.gpProdutosPedidos.TabIndex = 49;
             this.gpProdutosPedidos.TabStop = false;
             this.gpProdutosPedidos.Text = "Lista de Produtos";
@@ -289,12 +291,16 @@
             // 
             this.dgvProdutos.AllowUserToAddRows = false;
             this.dgvProdutos.AllowUserToDeleteRows = false;
+            this.dgvProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvProdutos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProdutos.Location = new System.Drawing.Point(26, 46);
+            this.dgvProdutos.Location = new System.Drawing.Point(23, 46);
+            this.dgvProdutos.MaximumSize = new System.Drawing.Size(429, 206);
+            this.dgvProdutos.MinimumSize = new System.Drawing.Size(339, 106);
             this.dgvProdutos.Name = "dgvProdutos";
             this.dgvProdutos.ReadOnly = true;
-            this.dgvProdutos.Size = new System.Drawing.Size(339, 106);
+            this.dgvProdutos.Size = new System.Drawing.Size(413, 146);
             this.dgvProdutos.TabIndex = 47;
             // 
             // btnIncluirProdutos
@@ -307,17 +313,20 @@
             this.btnIncluirProdutos.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIncluirProdutos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnIncluirProdutos.Image = ((System.Drawing.Image)(resources.GetObject("btnIncluirProdutos.Image")));
-            this.btnIncluirProdutos.Location = new System.Drawing.Point(341, 17);
+            this.btnIncluirProdutos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIncluirProdutos.Location = new System.Drawing.Point(401, 203);
             this.btnIncluirProdutos.Name = "btnIncluirProdutos";
-            this.btnIncluirProdutos.Size = new System.Drawing.Size(24, 26);
+            this.btnIncluirProdutos.Size = new System.Drawing.Size(87, 26);
             this.btnIncluirProdutos.TabIndex = 46;
-            this.btnIncluirProdutos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIncluirProdutos.Text = "Incluir";
+            this.btnIncluirProdutos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnIncluirProdutos.UseVisualStyleBackColor = false;
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(379, 25);
+            this.label6.Location = new System.Drawing.Point(450, 25);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(134, 18);
             this.label6.TabIndex = 33;
@@ -327,34 +336,29 @@
             // 
             this.dgvProdutosPedidos.AllowUserToAddRows = false;
             this.dgvProdutosPedidos.AllowUserToDeleteRows = false;
+            this.dgvProdutosPedidos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvProdutosPedidos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProdutosPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProdutosPedidos.Location = new System.Drawing.Point(382, 46);
+            this.dgvProdutosPedidos.Location = new System.Drawing.Point(453, 46);
+            this.dgvProdutosPedidos.MaximumSize = new System.Drawing.Size(429, 206);
+            this.dgvProdutosPedidos.MinimumSize = new System.Drawing.Size(339, 106);
             this.dgvProdutosPedidos.Name = "dgvProdutosPedidos";
             this.dgvProdutosPedidos.ReadOnly = true;
-            this.dgvProdutosPedidos.Size = new System.Drawing.Size(339, 106);
+            this.dgvProdutosPedidos.Size = new System.Drawing.Size(413, 146);
             this.dgvProdutosPedidos.TabIndex = 32;
             // 
             // lblListaProdutos
             // 
             this.lblListaProdutos.AutoSize = true;
-            this.lblListaProdutos.Location = new System.Drawing.Point(23, 25);
+            this.lblListaProdutos.Location = new System.Drawing.Point(20, 25);
             this.lblListaProdutos.Name = "lblListaProdutos";
             this.lblListaProdutos.Size = new System.Drawing.Size(157, 18);
             this.lblListaProdutos.TabIndex = 31;
             this.lblListaProdutos.Text = "Produtos Disponiveis";
             // 
-            // textBox5
-            // 
-            this.textBox5.Enabled = false;
-            this.textBox5.Location = new System.Drawing.Point(702, 12);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(30, 26);
-            this.textBox5.TabIndex = 29;
-            this.textBox5.Visible = false;
-            // 
             // CancelarProdutos
             // 
+            this.CancelarProdutos.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.CancelarProdutos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.CancelarProdutos.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
             this.CancelarProdutos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -362,7 +366,7 @@
             this.CancelarProdutos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.CancelarProdutos.Image = ((System.Drawing.Image)(resources.GetObject("CancelarProdutos.Image")));
             this.CancelarProdutos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CancelarProdutos.Location = new System.Drawing.Point(382, 183);
+            this.CancelarProdutos.Location = new System.Drawing.Point(453, 282);
             this.CancelarProdutos.Name = "CancelarProdutos";
             this.CancelarProdutos.Size = new System.Drawing.Size(103, 26);
             this.CancelarProdutos.TabIndex = 27;
@@ -373,6 +377,7 @@
             // 
             // btnSalvarProduto
             // 
+            this.btnSalvarProduto.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnSalvarProduto.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnSalvarProduto.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
             this.btnSalvarProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -380,7 +385,7 @@
             this.btnSalvarProduto.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnSalvarProduto.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvarProduto.Image")));
             this.btnSalvarProduto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalvarProduto.Location = new System.Drawing.Point(262, 183);
+            this.btnSalvarProduto.Location = new System.Drawing.Point(333, 282);
             this.btnSalvarProduto.Name = "btnSalvarProduto";
             this.btnSalvarProduto.Size = new System.Drawing.Size(103, 26);
             this.btnSalvarProduto.TabIndex = 15;
@@ -391,19 +396,28 @@
             // 
             // cmbStatus
             // 
+            this.cmbStatus.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cmbStatus.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.cmbStatus.Enabled = false;
             this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Location = new System.Drawing.Point(455, 240);
+            this.cmbStatus.Items.AddRange(new object[] {
+            "ABERTO",
+            "EM ENTREGA",
+            "CANCELADO",
+            "ENTREGUE"});
+            this.cmbStatus.Location = new System.Drawing.Point(553, 240);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(145, 26);
             this.cmbStatus.TabIndex = 48;
             // 
             // lblDetalhes
             // 
+            this.lblDetalhes.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblDetalhes.AutoSize = true;
             this.lblDetalhes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblDetalhes.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDetalhes.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblDetalhes.Location = new System.Drawing.Point(662, 28);
+            this.lblDetalhes.Location = new System.Drawing.Point(760, 28);
             this.lblDetalhes.Name = "lblDetalhes";
             this.lblDetalhes.Size = new System.Drawing.Size(59, 14);
             this.lblDetalhes.TabIndex = 47;
@@ -412,7 +426,7 @@
             // 
             // btnMaisProdutos
             // 
-            this.btnMaisProdutos.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnMaisProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMaisProdutos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(189)))), ((int)(((byte)(12)))));
             this.btnMaisProdutos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnMaisProdutos.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
@@ -420,7 +434,7 @@
             this.btnMaisProdutos.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMaisProdutos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnMaisProdutos.Image = ((System.Drawing.Image)(resources.GetObject("btnMaisProdutos.Image")));
-            this.btnMaisProdutos.Location = new System.Drawing.Point(697, 74);
+            this.btnMaisProdutos.Location = new System.Drawing.Point(891, 74);
             this.btnMaisProdutos.Name = "btnMaisProdutos";
             this.btnMaisProdutos.Size = new System.Drawing.Size(24, 26);
             this.btnMaisProdutos.TabIndex = 46;
@@ -430,8 +444,9 @@
             // 
             // lblValor
             // 
+            this.lblValor.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblValor.AutoSize = true;
-            this.lblValor.Location = new System.Drawing.Point(613, 219);
+            this.lblValor.Location = new System.Drawing.Point(708, 219);
             this.lblValor.Name = "lblValor";
             this.lblValor.Size = new System.Drawing.Size(80, 18);
             this.lblValor.TabIndex = 45;
@@ -439,8 +454,9 @@
             // 
             // lblStatus
             // 
+            this.lblStatus.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(452, 219);
+            this.lblStatus.Location = new System.Drawing.Point(550, 219);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(107, 18);
             this.lblStatus.TabIndex = 44;
@@ -448,8 +464,9 @@
             // 
             // lblDtEntrega
             // 
+            this.lblDtEntrega.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblDtEntrega.AutoSize = true;
-            this.lblDtEntrega.Location = new System.Drawing.Point(239, 219);
+            this.lblDtEntrega.Location = new System.Drawing.Point(337, 219);
             this.lblDtEntrega.Name = "lblDtEntrega";
             this.lblDtEntrega.Size = new System.Drawing.Size(101, 18);
             this.lblDtEntrega.TabIndex = 43;
@@ -457,8 +474,9 @@
             // 
             // lblDtEfetuada
             // 
+            this.lblDtEfetuada.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblDtEfetuada.AutoSize = true;
-            this.lblDtEfetuada.Location = new System.Drawing.Point(26, 219);
+            this.lblDtEfetuada.Location = new System.Drawing.Point(124, 219);
             this.lblDtEfetuada.Name = "lblDtEfetuada";
             this.lblDtEfetuada.Size = new System.Drawing.Size(109, 18);
             this.lblDtEfetuada.TabIndex = 42;
@@ -466,35 +484,39 @@
             // 
             // txtValorTotal
             // 
+            this.txtValorTotal.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtValorTotal.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.txtValorTotal.Enabled = false;
-            this.txtValorTotal.Location = new System.Drawing.Point(616, 240);
+            this.txtValorTotal.Location = new System.Drawing.Point(711, 240);
             this.txtValorTotal.Name = "txtValorTotal";
             this.txtValorTotal.Size = new System.Drawing.Size(105, 26);
             this.txtValorTotal.TabIndex = 41;
             // 
             // txtDtEntrega
             // 
+            this.txtDtEntrega.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDtEntrega.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.txtDtEntrega.Enabled = false;
-            this.txtDtEntrega.Location = new System.Drawing.Point(242, 240);
+            this.txtDtEntrega.Location = new System.Drawing.Point(340, 240);
             this.txtDtEntrega.Name = "txtDtEntrega";
             this.txtDtEntrega.Size = new System.Drawing.Size(196, 26);
             this.txtDtEntrega.TabIndex = 39;
             // 
             // txtDtEfetuada
             // 
+            this.txtDtEfetuada.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDtEfetuada.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.txtDtEfetuada.Enabled = false;
-            this.txtDtEfetuada.Location = new System.Drawing.Point(29, 240);
+            this.txtDtEfetuada.Location = new System.Drawing.Point(127, 240);
             this.txtDtEfetuada.Name = "txtDtEfetuada";
             this.txtDtEfetuada.Size = new System.Drawing.Size(196, 26);
             this.txtDtEfetuada.TabIndex = 38;
             // 
             // lblProdutosPedidos
             // 
+            this.lblProdutosPedidos.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblProdutosPedidos.AutoSize = true;
-            this.lblProdutosPedidos.Location = new System.Drawing.Point(379, 82);
+            this.lblProdutosPedidos.Location = new System.Drawing.Point(477, 84);
             this.lblProdutosPedidos.Name = "lblProdutosPedidos";
             this.lblProdutosPedidos.Size = new System.Drawing.Size(148, 18);
             this.lblProdutosPedidos.TabIndex = 33;
@@ -502,11 +524,14 @@
             // 
             // dgvListaProdutos
             // 
+            this.dgvListaProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvListaProdutos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvListaProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListaProdutos.Location = new System.Drawing.Point(382, 103);
+            this.dgvListaProdutos.Location = new System.Drawing.Point(480, 105);
+            this.dgvListaProdutos.MaximumSize = new System.Drawing.Size(436, 104);
+            this.dgvListaProdutos.MinimumSize = new System.Drawing.Size(336, 104);
             this.dgvListaProdutos.Name = "dgvListaProdutos";
-            this.dgvListaProdutos.Size = new System.Drawing.Size(339, 106);
+            this.dgvListaProdutos.Size = new System.Drawing.Size(436, 104);
             this.dgvListaProdutos.TabIndex = 32;
             // 
             // lblObservacao
@@ -520,10 +545,14 @@
             // 
             // txtObservacao
             // 
-            this.txtObservacao.Location = new System.Drawing.Point(29, 105);
+            this.txtObservacao.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtObservacao.Location = new System.Drawing.Point(27, 105);
+            this.txtObservacao.MaximumSize = new System.Drawing.Size(436, 104);
+            this.txtObservacao.MinimumSize = new System.Drawing.Size(336, 104);
             this.txtObservacao.Multiline = true;
             this.txtObservacao.Name = "txtObservacao";
-            this.txtObservacao.Size = new System.Drawing.Size(336, 104);
+            this.txtObservacao.Size = new System.Drawing.Size(436, 104);
             this.txtObservacao.TabIndex = 30;
             // 
             // txtID
@@ -545,7 +574,7 @@
             this.btnPesquisar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnPesquisar.Image = ((System.Drawing.Image)(resources.GetObject("btnPesquisar.Image")));
             this.btnPesquisar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPesquisar.Location = new System.Drawing.Point(173, 44);
+            this.btnPesquisar.Location = new System.Drawing.Point(271, 44);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(32, 26);
             this.btnPesquisar.TabIndex = 28;
@@ -554,6 +583,7 @@
             // 
             // btnCancelar
             // 
+            this.btnCancelar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -561,7 +591,7 @@
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(382, 298);
+            this.btnCancelar.Location = new System.Drawing.Point(480, 298);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(103, 26);
             this.btnCancelar.TabIndex = 27;
@@ -572,7 +602,8 @@
             // 
             // txtTelefonePedido
             // 
-            this.txtTelefonePedido.Location = new System.Drawing.Point(29, 44);
+            this.txtTelefonePedido.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtTelefonePedido.Location = new System.Drawing.Point(127, 44);
             this.txtTelefonePedido.Mask = "(99)99999-9999";
             this.txtTelefonePedido.Name = "txtTelefonePedido";
             this.txtTelefonePedido.Size = new System.Drawing.Size(138, 26);
@@ -581,8 +612,9 @@
             // 
             // lblTelPedido
             // 
+            this.lblTelPedido.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblTelPedido.AutoSize = true;
-            this.lblTelPedido.Location = new System.Drawing.Point(26, 23);
+            this.lblTelPedido.Location = new System.Drawing.Point(124, 23);
             this.lblTelPedido.Name = "lblTelPedido";
             this.lblTelPedido.Size = new System.Drawing.Size(141, 18);
             this.lblTelPedido.TabIndex = 17;
@@ -590,6 +622,7 @@
             // 
             // btnSalvar
             // 
+            this.btnSalvar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnSalvar.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnSalvar.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -597,7 +630,7 @@
             this.btnSalvar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvar.Image")));
             this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalvar.Location = new System.Drawing.Point(262, 298);
+            this.btnSalvar.Location = new System.Drawing.Point(360, 298);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(103, 26);
             this.btnSalvar.TabIndex = 15;
@@ -607,8 +640,9 @@
             // 
             // lblNomePedido
             // 
+            this.lblNomePedido.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblNomePedido.AutoSize = true;
-            this.lblNomePedido.Location = new System.Drawing.Point(224, 22);
+            this.lblNomePedido.Location = new System.Drawing.Point(322, 22);
             this.lblNomePedido.Name = "lblNomePedido";
             this.lblNomePedido.Size = new System.Drawing.Size(125, 18);
             this.lblNomePedido.TabIndex = 5;
@@ -616,9 +650,10 @@
             // 
             // txtNomePedido
             // 
+            this.txtNomePedido.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtNomePedido.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.txtNomePedido.Enabled = false;
-            this.txtNomePedido.Location = new System.Drawing.Point(226, 44);
+            this.txtNomePedido.Location = new System.Drawing.Point(321, 44);
             this.txtNomePedido.Name = "txtNomePedido";
             this.txtNomePedido.Size = new System.Drawing.Size(495, 26);
             this.txtNomePedido.TabIndex = 1;
@@ -629,7 +664,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(770, 395);
+            this.ClientSize = new System.Drawing.Size(980, 395);
             this.Controls.Add(this.gpPedidos);
             this.Controls.Add(this.txtConsTel);
             this.Controls.Add(this.btnAlterar);
@@ -701,7 +736,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView dgvProdutosPedidos;
         private System.Windows.Forms.Label lblListaProdutos;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Button CancelarProdutos;
         private System.Windows.Forms.Button btnSalvarProduto;
         private System.Windows.Forms.ComboBox cmbStatus;

@@ -82,13 +82,14 @@ namespace DAL
             }
         }
 
-        public List<Pedido> ConsultarPedidos(string telefone)
+        public List<Pedido> ConsultarPedidos(Pedido pedid)
         {
-            string select = @"select PED.ID_PEDIDO, U.CD_TELEFONE, PED.DS_OBSERVACAO, PED.DT_EFETUADO, PED.DT_ENTREGUE, ST.ID_STATUS_PEDIDO, PED.VAL_TOTAL";
-            select += @" FROM PEDIDO AS PED";
-            select += @" JOIN CLIENTE AS U";
-            select += @" JOIN STATUS_PEDIDO AS ST";
-            select += @" WHERE U.CD_TELEFONE LIKE = '%" + telefone + "%'";
+            string select = @"SELECT PE.ID_PEDIDO, CL.NM_CLIENTE, CL.CD_TELEFONE, PE.DS_OBSERVACAO, PE.DT_EFETUADO, PE.DT_ENTREGUE, ST.ID_STATUS, ST.NM_STATUS, PE.VAL_TOTAL ";
+            select += "FROM PEDIDO AS PE ";
+            select += "JOIN CLIENTE AS CL ";
+            select += "JOIN STATUS_PEDIDO AS ST ";
+            select += "ON PE.CD_TELEFONE_CLIENTE = CL.CD_TELEFONE AND PE.ID_STATUS_PEDIDO = ST.ID_STATUS ";
+            select += "WHERE PE.CD_TELEFONE_CLIENTE LIKE '%" + pedid.Cliente.Telefone + "%' OR PE.ID_PEDIDO = " + pedid.ID ;
 
             List<Pedido> pedidos = new List<Pedido>();
 
@@ -105,7 +106,7 @@ namespace DAL
                     Pedido pedido = new Pedido
                     {
                         ID = Convert.ToInt32(dr["ID_PEDIDO"]),
-                        Cliente = { Nome = dr["NM_CLIENTE"].ToString(), Telefone = dr["CD_TELEFONE"].ToString() },
+                        Cliente = { Nome = dr["NM_CLIENTE"].ToString(), Telefone = dr["CD_TELEFONE"].ToString(), CEP = "", Bairro = "", Endereco = "", Numero = "", Complemento = "" },
                         Observacao = dr["DS_OBSERVACAO"].ToString(),
                         DataEfetuada = Convert.ToDateTime(dr["DT_EFETUADO"]),
                         DataEntregue = Convert.ToDateTime(dr["DT_ENTREGUE"]),

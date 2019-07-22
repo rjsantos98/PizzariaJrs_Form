@@ -16,7 +16,7 @@ namespace BLL
             produtoPedidoDAL = new ProdutoPedidoDAL();
         }
 
-        public List<ProdutoPedido> ConsultarProdutosPedidos(Pedido pedido)
+        public Pedido ConsultarProdutosPedidos(Pedido pedido)
         {
             return produtoPedidoDAL.ConsultarProdutosPedidos(pedido);
         }

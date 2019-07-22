@@ -14,13 +14,13 @@ namespace DAL
         Conexao banco = new Conexao();
         MySqlCommand _cmd;
 
-        public List<ProdutoPedido> ConsultarProdutosPedidos(Pedido pedido)
+        public Pedido ConsultarProdutosPedidos(Pedido pedido)
         {
             try
             {
-                string select = @"select pe.ID_PEDIDO, pr.ID_PRODUTO, pp.QT_PRODUTO, pp.VAL_UNIT";
-                select += @" from PRODUTO_PEDIDO as pp JOIN PRODUTO as pr JOIN PEDIDO as pe";
-                select += @" WHERE pe.ID_PEDIDO = " + pedido.ID + " AND pp.ID_PRODUTO = pr.ID_PRODUTO";
+                string select = @"SELECT PP.ID_PEDIDO, PP.ID_PRODUTO, PR.NM_PRODUTO, PR.DS_PRODUTO, PR.VAL_PRODUTO, PP.QT_PRODUTO, PP.VAL_UNIT";
+                select += @" FROM PRODUTO_PEDIDO AS PP JOIN PRODUTO AS PR";
+                select += @" ON PP.ID_PEDIDO = " + pedido.ID + " AND PP.ID_PRODUTO = PR.ID_PRODUTO";
 
                 _cmd = new MySqlCommand(select, banco.AbrirConexao());
                 MySqlDataReader dr;
@@ -31,7 +31,7 @@ namespace DAL
                     ProdutoPedido produto = new ProdutoPedido
                     {
                         Pedido = { ID = Convert.ToInt32(dr["ID_PEDIDO"]) },
-                        Produto = { ID = Convert.ToInt32(dr["ID_PRODUTO"]), Nome = dr["NM_PRODUTO"].ToString() },
+                        Produto = { ID = Convert.ToInt32(dr["ID_PRODUTO"]), Nome = dr["NM_PRODUTO"].ToString()  },
                         Quantidade = Convert.ToInt32(dr["QT_PRODUTO"]),
                         Valor = Convert.ToDouble(dr["VAL_UNIT"])
                     };
@@ -46,7 +46,7 @@ namespace DAL
             {
                 banco.FecharConexao();
             }
-            return pedido.produtoPedidos;
+            return pedido;
         }
     }
 }

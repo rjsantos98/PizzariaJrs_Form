@@ -15,5 +15,10 @@ namespace DTO
         public string Endereco { get; set; }
         public string Numero { get; set; }
         public string Complemento { get; set; }
+
+        public override string ToString()
+        {
+            return Nome;
+        }
     }
 }

@@ -35,7 +35,7 @@ namespace DAL
                         Quantidade = Convert.ToInt32(dr["QT_PRODUTO"]),
                         Valor = Convert.ToDouble(dr["VAL_UNIT"])
                     };
-                    pedido.produtoPedidos.Add(produto);
+                    pedido.listProdutoPedidos.Add(produto);
                 }
             }
             catch

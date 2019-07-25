@@ -16,24 +16,27 @@ namespace BLL
         {
             pedidoDAL = new PedidoDAL();
         }
-        
+
         public void SalvarPedido(Pedido pedido)
         {
             pedidoDAL.SalvarPedido(pedido);
         }
-
-        public List<Pedido> ConsultarPedidos(Pedido pedido)
+        public List<Pedido> ConsultarPedidosPorData(string data)
         {
-            return pedidoDAL.ConsultarPedidos(pedido);
+            return pedidoDAL.ConsultarPedidosPorData(data);
+        }
+        public List<Pedido> ConsultarPedidosPorTelefone(Pedido pedido)
+        {
+            return pedidoDAL.ConsultarPedidosPorTelefone(pedido);
         }
 
         public void AlterarPedido(Pedido pedido)
         {
             pedidoDAL.AlterarPedido(pedido);
         }
-        public void ExcluirPedido(Pedido pedido)
+        public int GetID()
         {
-            pedidoDAL.ExcluirPedido(pedido);
+            return pedidoDAL.GetID();
         }
 
     }

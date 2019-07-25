@@ -43,10 +43,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblNome = new System.Windows.Forms.Label();
             this.lblID = new System.Windows.Forms.Label();
-            this.txtFormat = new System.Windows.Forms.TextBox();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.TextBox();
+            this.txtFormat = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
             this.gpProdutos.SuspendLayout();
             this.SuspendLayout();
@@ -247,14 +247,6 @@
             this.lblID.TabIndex = 4;
             this.lblID.Text = "ID";
             // 
-            // txtFormat
-            // 
-            this.txtFormat.Enabled = false;
-            this.txtFormat.Location = new System.Drawing.Point(510, 50);
-            this.txtFormat.Name = "txtFormat";
-            this.txtFormat.Size = new System.Drawing.Size(152, 26);
-            this.txtFormat.TabIndex = 4;
-            // 
             // txtDescricao
             // 
             this.txtDescricao.Location = new System.Drawing.Point(36, 114);
@@ -277,6 +269,14 @@
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(77, 26);
             this.txtID.TabIndex = 1;
+            // 
+            // txtFormat
+            // 
+            this.txtFormat.Enabled = false;
+            this.txtFormat.Location = new System.Drawing.Point(510, 50);
+            this.txtFormat.Name = "txtFormat";
+            this.txtFormat.Size = new System.Drawing.Size(152, 26);
+            this.txtFormat.TabIndex = 4;
             // 
             // FrmProdutos
             // 
@@ -321,10 +321,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.Label lblID;
-        private System.Windows.Forms.TextBox txtFormat;
         private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.TextBox txtValor;
+        private System.Windows.Forms.TextBox txtFormat;
     }
 }

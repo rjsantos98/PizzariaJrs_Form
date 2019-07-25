@@ -11,17 +11,17 @@ namespace DTO
         public int ID { get; set; }
         public Cliente Cliente { get; set; }
         public string Observacao { get; set; }
-        public DateTime DataEfetuada { get; set; }
-        public DateTime DataEntregue { get; set; }
+        public string DataEfetuada { get; set; }
+        public string DataEntregue { get; set; }
         public Status StatusPedido { get; set; }
         public double ValorTotal { get; set; }
-        public List<ProdutoPedido> produtoPedidos;
+        public List<ProdutoPedido> listProdutoPedidos;
 
         public Pedido()
         {
             Cliente = new Cliente{ };
             StatusPedido = new Status { };
-            produtoPedidos = new List<ProdutoPedido>();
+            listProdutoPedidos = new List<ProdutoPedido>();
         }
 
         public override string ToString()

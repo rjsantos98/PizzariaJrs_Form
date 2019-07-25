@@ -70,8 +70,15 @@ namespace UI
                 Close();
         }
 
-        public void GPClientes()
+        public void GPClientes(Cliente cliente)
         {
+            txtNome.Text = cliente.Nome;
+            txtTelefone.Text = cliente.Telefone;
+            txtCEP.Text = cliente.CEP;
+            txtBairro.Text = cliente.Bairro;
+            txtEndereco.Text = cliente.Endereco;
+            txtNumero.Text = cliente.Numero;
+            txtComplemento.Text = cliente.Complemento;
             gpClientes.Show();
         }
 
@@ -102,7 +109,7 @@ namespace UI
         private void AtualizarGrid()
         {
             dgvClientes.DataSource = null;
-            dgvClientes.DataSource = clienteBLL.GetClientes(txtConsTel.Text);
+            dgvClientes.DataSource = clienteBLL.ConsultarClientes(txtConsTel.Text);
             dgvClientes.Columns["Endereco"].HeaderText = "Endereço";
         }
 

@@ -95,6 +95,41 @@ namespace DAL
             }
             return clientes;
         }
+        public Cliente ConsultarClientePedido(string telefone)
+        {
+            string select = @"Select NM_CLIENTE, CD_TELEFONE, CD_CEP, NM_BAIRRO,
+                            NM_ENDERECO, CD_NUMERO, CD_COMPLEMENTO 
+                            FROM CLIENTE WHERE CD_TELEFONE like '" + telefone + "'";
+
+            Cliente cliente = new Cliente();
+
+            try
+            {
+                _cmd = new MySqlCommand(select, banco.AbrirConexao());
+
+                MySqlDataReader dr;
+
+                dr = _cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+
+                    cliente.Nome = dr["NM_CLIENTE"].ToString();
+                    cliente.Telefone = dr["CD_TELEFONE"].ToString();
+                    cliente.CEP = dr["CD_CEP"].ToString();
+                    cliente.Bairro = dr["NM_BAIRRO"].ToString();
+                    cliente.Endereco = dr["NM_ENDERECO"].ToString();
+                    cliente.Numero = dr["CD_NUMERO"].ToString();
+                    cliente.Complemento = dr["CD_COMPLEMENTO"].ToString();
+                }
+            }
+            finally
+            {
+                banco.FecharConexao();
+            }
+            return cliente;
+        }
+
         public void ExcluirCliente(string telefone)
         {
             try

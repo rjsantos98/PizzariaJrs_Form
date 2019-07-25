@@ -27,11 +27,15 @@ namespace BLL
             clienteDAL.AlterarCliente(cliente, antigotelefone);
         }
 
-        public List<Cliente> GetClientes(string telefone)
+        public List<Cliente> ConsultarClientes(string telefone)
         {
             return clienteDAL.ConsultarClientes(telefone);
         }
 
+        public Cliente ConsultarClientePedido(string telefone)
+        {
+            return clienteDAL.ConsultarClientePedido(telefone);
+        }
         public void ExcluirCliente(string telefone)
         {
             clienteDAL.ExcluirCliente(telefone);

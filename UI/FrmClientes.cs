@@ -17,8 +17,8 @@ namespace UI
         private ClienteBLL clienteBLL;
         private Cliente cliente;
         private int modoabertura;
-        private string modo;
         private string antigoNumero;
+        FrmPedidos frmPedidos;
         public FrmClientes(int modo)
         {
             InitializeComponent();
@@ -31,14 +31,12 @@ namespace UI
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             gpClientes.Text = "Cadastrar Cliente";
-            modo = "cadastrar";
             gpClientes.Show();
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             gpClientes.Text = "Alterar Cliente";
-            modo = "alterar";
             gpClientes.Show();
             txtNome.Text = cliente.Nome;
             txtTelefone.Text = cliente.Telefone;
@@ -58,20 +56,26 @@ namespace UI
             cliente.Endereco = txtEndereco.Text;
             cliente.Numero = txtNumero.Text;
             cliente.Complemento = txtComplemento.Text;
-            if (modo == "cadastrar")
+            if (gpClientes.Text == "Cadastrar Cliente")
                 clienteBLL.SalvarCliente(cliente);
-            else if (modo == "alterar")
+            else if (gpClientes.Text == "Alterar Cliente")
                 clienteBLL.AlterarCliente(cliente, antigoNumero);
 
             Limpar();
             AtualizarGrid();
             gpClientes.Hide();
-            if (modoabertura == 1)
+            if (modoabertura == 1) {
+                frmPedidos.DadosAtualizados(cliente);
                 Close();
+            }
+
         }
 
-        public void GPClientes(Cliente cliente)
+        public void GPClientes(Cliente cliente, FrmPedidos form)
         {
+            frmPedidos = new FrmPedidos(null);
+            frmPedidos = form;
+            antigoNumero = cliente.Telefone;
             txtNome.Text = cliente.Nome;
             txtTelefone.Text = cliente.Telefone;
             txtCEP.Text = cliente.CEP;
@@ -79,6 +83,7 @@ namespace UI
             txtEndereco.Text = cliente.Endereco;
             txtNumero.Text = cliente.Numero;
             txtComplemento.Text = cliente.Complemento;
+            gpClientes.Text = "Alterar Cliente";
             gpClientes.Show();
         }
 

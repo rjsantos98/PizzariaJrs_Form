@@ -23,7 +23,7 @@ namespace UI
         private Produto produto;
         private ClienteBLL clienteBLL;
         private Cliente cliente;
-        private List<ProdutoPedido> listarProdutosPedidos;
+        private BindingList<ProdutoPedido> listarProdutosPedidos;
         string dia, mes, ano, hora, minuto, segundo;
 
         public FrmPedidos(Form frmPrincipal)
@@ -36,10 +36,10 @@ namespace UI
             produtoPedidoBLL = new ProdutoPedidoBLL();
             produtoBLL = new ProdutoBLL();
             produto = new Produto();
+            listarProdutosPedidos = new BindingList<ProdutoPedido>();
             rdbTelefone.Checked = true;
             GridConsultaPedidos();
             GridProdutos();
-            GridListarProdutos();
         }
 
         private void FrmPedidos_FormClosed(object sender, FormClosedEventArgs e)
@@ -47,32 +47,7 @@ namespace UI
             principal.Show();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            dia = DateTime.Now.Day.ToString();
-            mes = DateTime.Now.Month.ToString();
-            ano = DateTime.Now.Year.ToString();
-            lblData.Text = dia + "/" + mes + "/" + ano;
-            hora = DateTime.Now.Hour.ToString();
-            minuto = DateTime.Now.Minute.ToString();
-            segundo = DateTime.Now.Second.ToString();
-            lblHorario.Text = hora + ":" + minuto + ":" + segundo;
-
-            double subtotal = 0;
-            if (dgvListaProdutos.DataSource == null)
-            {
-                txtValorTotal.Text = "0,00";
-            }
-            else
-            {
-                foreach (ProdutoPedido prod in pedido.listProdutoPedidos)
-                {
-                    subtotal += prod.Valor;
-                }
-                txtValorTotal.Text = subtotal.ToString("C");
-            }
-        }
-
+        //GP Pedidos
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             Limpar();
@@ -106,126 +81,229 @@ namespace UI
                 MessageBox.Show("Selecione um pedido");
             }
         }
-
-        private void btnSalvar_Click(object sender, EventArgs e)
+        private void btnPesquisarCliente_Click(object sender, EventArgs e)
         {
-            string valor;
-            valor = txtValorTotal.Text;
-            valor = valor.Remove(0, 2);
-            pedido.ID = Convert.ToInt32(txtID.Text);
-            pedido.Cliente.Telefone = txtTelefonePedido.Text;
-            pedido.Observacao = txtObservacao.Text;
-            pedido.ValorTotal = Convert.ToDouble(valor);
-            pedido.DataEfetuada = $"{ano}/{mes}/{dia} {hora}:{minuto}:{segundo}";
-            pedido.StatusPedido.ID = cmbStatus.SelectedIndex;
+            clienteBLL = new ClienteBLL();
+            cliente = new Cliente();
+            cliente = clienteBLL.ConsultarClientePedido(txtTelefonePedido.Text);
+            txtNomePedido.Text = cliente.Nome;
+            if (txtTelefonePedido.Text is null || txtTelefonePedido.Text == "")
+                MessageBox.Show("Digite um número de telefone para pesquisa");
+            else if(txtNomePedido.Text is null || txtNomePedido.Text == "")
+                MessageBox.Show("O número de informado não existe ou está incorreto");
+        }
 
-            if (cmbStatus.SelectedIndex == 2 || cmbStatus.SelectedIndex == 3 || cmbStatus.SelectedIndex == 4)
-                pedido.DataEntregue = $"{ano}/{mes}/{dia} {hora}:{minuto}:{segundo}";
-            else if (cmbStatus.SelectedIndex == 1)
-                pedido.DataEntregue = null;
-
-            if (gpPedidos.Text == "Cadastrar Pedido")
-                pedidoBLL.SalvarPedido(pedido);
-            else if (gpPedidos.Text == "Alterar Pedido")
+        private void btnSalvarPedido_Click(object sender, EventArgs e)
+        {
+            if (txtNomePedido.Text == "" || txtTelefonePedido.Text == "")
             {
-                pedidoBLL.AlterarPedido(pedido);
+                MessageBox.Show("Cliente não selecionado para pedido");
             }
-            MessageBox.Show("Dados do pedido salvo com sucesso");
-            Limpar();
-            GridConsultaPedidos();
-            gpPedidos.Hide();
+            else
+            {
+                if (listarProdutosPedidos.Count == 0 || listarProdutosPedidos is null)
+                {
+                    MessageBox.Show("Lista de produtos vazia, adicione um produto para abrir o pedido");
+                }
+                else
+                {
+                    string valor;
+                    valor = txtValorTotal.Text;
+                    valor = valor.Remove(0, 2);
+                    pedido.ID = Convert.ToInt32(txtID.Text);
+                    pedido.Cliente.Telefone = txtTelefonePedido.Text;
+                    pedido.Observacao = txtObservacao.Text;
+                    pedido.ValorTotal = Convert.ToDouble(valor);
+                    pedido.DataEfetuada = $"{ano}/{mes}/{dia} {hora}:{minuto}:{segundo}";
+                    pedido.StatusPedido.ID = cmbStatus.SelectedIndex;
+
+                    if (cmbStatus.SelectedIndex == 2 || cmbStatus.SelectedIndex == 3 || cmbStatus.SelectedIndex == 4)
+                        pedido.DataEntregue = $"{ano}/{mes}/{dia} {hora}:{minuto}:{segundo}";
+                    else if (cmbStatus.SelectedIndex == 1)
+                        pedido.DataEntregue = null;
+
+                    if (gpPedidos.Text == "Cadastrar Pedido")
+                        pedidoBLL.SalvarPedido(pedido);
+                    else if (gpPedidos.Text == "Alterar Pedido")
+                    {
+                        pedidoBLL.AlterarPedido(pedido);
+                    }
+                    MessageBox.Show("Dados do pedido salvo com sucesso");
+                    Limpar();
+                    GridConsultaPedidos();
+                    gpPedidos.Hide();
+                }
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            Limpar();
-            gpPedidos.Hide();
+            if (gpPedidos.Text == "Cadastrar Pedido") {
+                if (MessageBox.Show("Deseja cancelar o pedido?", "Atenção",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Limpar();
+                    gpPedidos.Hide();
+                }
+            }
+            else if (gpPedidos.Text == "Alterar Pedido")
+            {
+                if (MessageBox.Show("Deseja cancelar as alterações do pedido?", "Atenção",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Limpar();
+                    gpPedidos.Hide();
+                }
+            }
         }
 
         private void lblDetalhes_Click(object sender, EventArgs e)
         {
             FrmClientes frmClientes = new FrmClientes(1);
             frmClientes.Show();
-            frmClientes.GPClientes(cliente);
+            frmClientes.GPClientes(cliente, this);
         }
 
         private void btnMaisProdutos_Click(object sender, EventArgs e)
         {
-            listarProdutosPedidos = new List<ProdutoPedido>();
-            listarProdutosPedidos = pedido.listProdutoPedidos;
-            dgvProdutosPedidos.DataSource = null;
-            dgvProdutosPedidos.DataSource = listarProdutosPedidos;
-            dgvProdutosPedidos.Columns["Valor"].DefaultCellStyle.Format = "C2";
-            dgvProdutosPedidos.Columns["Pedido"].Visible = false;
-            gpProdutosPedidos.Show();
+            if(txtNomePedido.Text == "" || txtNomePedido.Text == null)
+            {
+                MessageBox.Show("Selecione o cliente");
+            }
+            else
+            {
+                listarProdutosPedidos = new BindingList<ProdutoPedido>(pedido.listProdutoPedidos);
+                dgvProdutosPedidos.DataSource = null;
+                dgvProdutosPedidos.DataSource = listarProdutosPedidos;
+                dgvProdutosPedidos.Columns["Valor"].DefaultCellStyle.Format = "C2";
+                dgvProdutosPedidos.Columns["Pedido"].Visible = false;
+                gpProdutosPedidos.Show();
+            }
+        }
+
+        private void cmbStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (pedido.StatusPedido.Nome != cmbStatus.Text)
+            {
+                if (cmbStatus.SelectedIndex == 2 || cmbStatus.SelectedIndex == 3 || cmbStatus.SelectedIndex == 4)
+                {
+                    txtDtEntrega.Text = $"{dia}/{mes}/{ano} {hora}:{minuto}:{segundo}";
+                    DialogResultCerteza();
+                    CamposAtivos();
+                }
+            }
+        }
+
+        //GP Produto_Pedido 
+        private void GridListarProdutos()
+        {
+            dgvListaProdutos.DataSource = null;
+            dgvListaProdutos.DataSource = pedido.listProdutoPedidos;
+            dgvListaProdutos.Columns["Valor"].DefaultCellStyle.Format = "C2";
+            dgvListaProdutos.Columns["Pedido"].Visible = false;
         }
 
         private void btnSalvarProduto_Click(object sender, EventArgs e)
         {
-            pedido.listProdutoPedidos = listarProdutosPedidos;
             gpProdutosPedidos.Hide();
             GridListarProdutos();
         }
 
         private void btnIncluirProdutos_Click(object sender, EventArgs e)
         {
-            bool existe = false;
-            foreach (ProdutoPedido produtoInclude in listarProdutosPedidos)
+            if (produtoPedido == null || produtoPedido is null)
+                MessageBox.Show("Selecione um produto para incluir");
+            else
             {
-                if (produtoInclude.Produto.ID == produtoPedido.Produto.ID)
+                bool existe = false;
+                foreach (ProdutoPedido produtoInclude in listarProdutosPedidos)
                 {
-                    existe = true;
-                    produtoInclude.Quantidade += 1;
-                    produtoInclude.Valor = produtoPedido.Produto.Valor * produtoInclude.Quantidade;
-                    break;
+                    if (produtoInclude.Produto.ID == produtoPedido.Produto.ID)
+                    {
+                        existe = true;
+                        produtoInclude.Quantidade += 1;
+                        produtoInclude.Valor = produtoPedido.Produto.Valor * produtoInclude.Quantidade;
+                        break;
+                    }
+                    else
+                    {
+                        existe = false;
+                    }
                 }
-                else
+                if (listarProdutosPedidos.Count < 1)
                 {
                     existe = false;
                 }
+                if (existe == false)
+                {
+                    listarProdutosPedidos.Add(produtoPedido);
+                }
+                dgvProdutosPedidos.DataSource = null;
+                dgvProdutosPedidos.DataSource = listarProdutosPedidos;
+                dgvProdutosPedidos.Columns["Valor"].DefaultCellStyle.Format = "C2";
+                dgvProdutosPedidos.Columns["Pedido"].Visible = false;
             }
-            if (listarProdutosPedidos.Count < 1)
-            {
-                existe = false;
-            }
-            if (existe == false)
-            {
-                listarProdutosPedidos.Add(produtoPedido);
-            }
-
-            dgvProdutosPedidos.DataSource = null;
-            dgvProdutosPedidos.DataSource = listarProdutosPedidos;
-            dgvProdutosPedidos.Columns["Valor"].DefaultCellStyle.Format = "C2";
-            dgvProdutosPedidos.Columns["Pedido"].Visible = false;
         }
 
         private void btnRemoverProduto_Click(object sender, EventArgs e)
         {
-            int i = -1;
-            foreach (ProdutoPedido prod in listarProdutosPedidos)
+            if (produtoPedido == null || produtoPedido is null)
+                MessageBox.Show("Selecione um produto para remover");
+            else
             {
-                if (prod.Produto.Nome == produtoPedido.Produto.Nome)
+                int i = -1;
+                foreach (ProdutoPedido prod in listarProdutosPedidos)
                 {
-                    i = listarProdutosPedidos.IndexOf(prod);
-                    double valor = prod.Valor / prod.Quantidade;
-                    if (prod.Quantidade > 1)
+                    if (prod.Produto.Nome == produtoPedido.Produto.Nome)
                     {
-                        prod.Quantidade -= 1;
-                        prod.Valor = valor * prod.Quantidade;
+                        i = listarProdutosPedidos.IndexOf(prod);
+                        double valor = prod.Valor / prod.Quantidade;
+                        if (prod.Quantidade > 1)
+                        {
+                            prod.Quantidade -= 1;
+                            prod.Valor = valor * prod.Quantidade;
+                        }
+                        else
+                        {
+                            listarProdutosPedidos.RemoveAt(i);
+                        }
+                        break;
                     }
-                    else
-                    {
-                        listarProdutosPedidos.RemoveAt(i);
-                    }
-                    break;
                 }
+                dgvProdutosPedidos.DataSource = null;
+                dgvProdutosPedidos.DataSource = listarProdutosPedidos;
+                dgvProdutosPedidos.Columns["Valor"].DefaultCellStyle.Format = "C2";
+                dgvProdutosPedidos.Columns["Pedido"].Visible = false;
             }
-            dgvProdutosPedidos.DataSource = null;
-            dgvProdutosPedidos.DataSource = listarProdutosPedidos;
-            dgvProdutosPedidos.Columns["Valor"].DefaultCellStyle.Format = "C2";
-            dgvProdutosPedidos.Columns["Pedido"].Visible = false;
-
         }
+        private void GridProdutos()
+        {
+            dgvProdutos.DataSource = null;
+            dgvProdutos.DataSource = produtoBLL.ConsultarProdutor(produto.Nome);
+            dgvProdutos.Columns["ID"].Visible = false;
+            dgvProdutos.Columns["Valor"].DefaultCellStyle.Format = "C2";
+            dgvProdutos.Columns["Descricao"].HeaderText = "Descrição";
+        }
+        private void SelecionarProdutoIncluir_ClickSelector(object sender, DataGridViewCellEventArgs e)
+        {
+            produtoPedido = new ProdutoPedido();
+            produtoPedido.Pedido.ID = Convert.ToInt32(txtID.Text);
+            produtoPedido.Produto.ID = Convert.ToInt32(dgvProdutos.Rows[e.RowIndex].Cells[0].Value);
+            produtoPedido.Produto.Nome = Convert.ToString(dgvProdutos.Rows[e.RowIndex].Cells[1].Value);
+            produtoPedido.Produto.Valor = Convert.ToDouble(dgvProdutos.Rows[e.RowIndex].Cells[3].Value);
+            produtoPedido.Valor = produtoPedido.Produto.Valor;
+            produtoPedido.Quantidade = 1;
+        }
+        private void SelecionarProdutosRemover_ClickSelector(object sender, DataGridViewCellEventArgs e)
+        {
+            produtoPedido = new ProdutoPedido();
+            produtoPedido.Pedido.ID = Convert.ToInt32(txtID.Text);
+            produtoPedido.Produto.Nome = Convert.ToString(dgvProdutosPedidos.Rows[e.RowIndex].Cells[1].Value);
+            produtoPedido.Quantidade = Convert.ToInt32(dgvProdutosPedidos.Rows[e.RowIndex].Cells[2].Value);
+            produtoPedido.Valor = Convert.ToDouble(dgvProdutosPedidos.Rows[e.RowIndex].Cells[3].Value);
+        }
+
+        //Grid Pedidos e Consultar
         private void rdbTelefone_CheckedChanged(object sender, EventArgs e)
         {
             if (rdbTelefone.Checked)
@@ -245,7 +323,6 @@ namespace UI
                 txtConsData.Enabled = true;
             }
         }
-
         private void btnConsultar_Click(object sender, EventArgs e)
         {
             pedido = new Pedido();
@@ -262,14 +339,6 @@ namespace UI
                 GridConsultaData(dataConsulta);
             }
         }
-        private void btnPesquisarCliente_Click(object sender, EventArgs e)
-        {
-            clienteBLL = new ClienteBLL();
-            cliente = new Cliente();
-            cliente = clienteBLL.ConsultarClientePedido(txtTelefonePedido.Text);
-            txtNomePedido.Text = cliente.Nome;
-        }
-        //Grid Pedidos
         private void GridConsultaData(string data)
         {
             dgvPedidos.DataSource = null;
@@ -303,60 +372,12 @@ namespace UI
             pedido = produtoPedidoBLL.ConsultarProdutosPedidos(pedido);
             cliente = clienteBLL.ConsultarClientePedido(pedido.Cliente.Telefone);
         }
-        //Grid Produtos
-        private void GridProdutos()
-        {
-            dgvProdutos.DataSource = null;
-            dgvProdutos.DataSource = produtoBLL.ConsultarProdutor(produto.Nome);
-            dgvProdutos.Columns["ID"].Visible = false;
-            dgvProdutos.Columns["Valor"].DefaultCellStyle.Format = "C2";
-            dgvProdutos.Columns["Descricao"].HeaderText = "Descrição";
-        }
-
-        private void cmbStatus_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (pedido.StatusPedido.Nome != cmbStatus.Text)
-            {
-                if (cmbStatus.SelectedIndex == 2 || cmbStatus.SelectedIndex == 3 || cmbStatus.SelectedIndex == 4)
-                {
-                    txtDtEntrega.Text = $"{dia}/{mes}/{ano} {hora}:{minuto}:{segundo}";
-                    DialogResultCerteza();
-                    CamposAtivos();
-                }
-            }
-        }
-
-        private void GridListarProdutos()
-        {
-            dgvListaProdutos.DataSource = null;
-            dgvListaProdutos.DataSource = pedido.listProdutoPedidos;
-            dgvListaProdutos.Columns["Valor"].DefaultCellStyle.Format = "C2";
-            dgvListaProdutos.Columns["Pedido"].Visible = false;
-        }
-        private void RemoverProdutosPedidos_ClickSelector(object sender, DataGridViewCellEventArgs e)
-        {
-            produtoPedido = new ProdutoPedido();
-            produtoPedido.Pedido.ID = Convert.ToInt32(txtID.Text);
-            produtoPedido.Produto.Nome = Convert.ToString(dgvProdutosPedidos.Rows[e.RowIndex].Cells[1].Value);
-            produtoPedido.Quantidade = Convert.ToInt32(dgvProdutosPedidos.Rows[e.RowIndex].Cells[2].Value);
-            produtoPedido.Valor = Convert.ToDouble(dgvProdutosPedidos.Rows[e.RowIndex].Cells[3].Value);
-        }
-
-        private void IncluirProdutos_ClickSelector(object sender, DataGridViewCellEventArgs e)
-        {
-            produtoPedido = new ProdutoPedido();
-            produtoPedido.Pedido.ID = Convert.ToInt32(txtID.Text);
-            produtoPedido.Produto.ID = Convert.ToInt32(dgvProdutos.Rows[e.RowIndex].Cells[0].Value);
-            produtoPedido.Produto.Nome = Convert.ToString(dgvProdutos.Rows[e.RowIndex].Cells[1].Value);
-            produtoPedido.Produto.Valor = Convert.ToDouble(dgvProdutos.Rows[e.RowIndex].Cells[3].Value);
-            produtoPedido.Valor = produtoPedido.Produto.Valor;
-            produtoPedido.Quantidade = 1;
-        }
 
         //Funções programaticas
         private void Limpar()
         {
             pedido = new Pedido();
+            listarProdutosPedidos = new BindingList<ProdutoPedido>();
             dgvListaProdutos.DataSource = null;
             txtTelefonePedido.Clear();
             txtNomePedido.Clear();
@@ -412,6 +433,41 @@ namespace UI
                     cmbStatus.SelectedItem = pedido.StatusPedido.Nome;
                 }
             }
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            dia = DateTime.Now.Day.ToString();
+            mes = DateTime.Now.Month.ToString();
+            ano = DateTime.Now.Year.ToString();
+            lblData.Text = dia + "/" + mes + "/" + ano;
+            hora = DateTime.Now.Hour.ToString();
+            minuto = DateTime.Now.Minute.ToString();
+            segundo = DateTime.Now.Second.ToString();
+            lblHorario.Text = hora + ":" + minuto + ":" + segundo;
+
+            if (txtNomePedido.Text == null || txtNomePedido.Text == "")
+                lblDetalhes.Enabled = false;
+            else
+                lblDetalhes.Enabled = true;
+
+            double subtotal = 0;
+            if (dgvListaProdutos.DataSource == null)
+                txtValorTotal.Text = "0,00";
+            else
+            {
+                foreach (ProdutoPedido prod in pedido.listProdutoPedidos)
+                {
+                    subtotal += prod.Valor;
+                }
+                txtValorTotal.Text = subtotal.ToString("C");
+            }
+        }
+
+        public void DadosAtualizados(Cliente clienteAtualizado)
+        {
+            cliente = clienteAtualizado;
+            txtTelefonePedido.Text = cliente.Telefone;
+            txtNomePedido.Text = cliente.Nome;
         }
     }
 }

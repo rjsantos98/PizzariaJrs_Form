@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPedidos));
             this.lblHorario = new System.Windows.Forms.Label();
             this.lblData = new System.Windows.Forms.Label();
-            this.txtValorTotal = new System.Windows.Forms.TextBox();
             this.txtConsTel = new System.Windows.Forms.MaskedTextBox();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
@@ -40,15 +39,12 @@
             this.btnConsultar = new System.Windows.Forms.Button();
             this.lblConsultTel = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.txtConsData = new System.Windows.Forms.MaskedTextBox();
+            this.lblDataPedidoConsl = new System.Windows.Forms.Label();
+            this.rdbTelefone = new System.Windows.Forms.RadioButton();
+            this.rdbData = new System.Windows.Forms.RadioButton();
             this.gpPedidos = new System.Windows.Forms.GroupBox();
-            this.gpProdutosPedidos = new System.Windows.Forms.GroupBox();
-            this.btnRemoverProduto = new System.Windows.Forms.Button();
-            this.dgvProdutos = new System.Windows.Forms.DataGridView();
-            this.btnIncluirProdutos = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dgvProdutosPedidos = new System.Windows.Forms.DataGridView();
-            this.lblListaProdutos = new System.Windows.Forms.Label();
-            this.btnSalvarProduto = new System.Windows.Forms.Button();
+            this.txtValorTotal = new System.Windows.Forms.TextBox();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.lblDetalhes = new System.Windows.Forms.Label();
             this.btnMaisProdutos = new System.Windows.Forms.Button();
@@ -70,16 +66,20 @@
             this.btnSalvar = new System.Windows.Forms.Button();
             this.lblNomePedido = new System.Windows.Forms.Label();
             this.txtNomePedido = new System.Windows.Forms.TextBox();
-            this.txtConsData = new System.Windows.Forms.MaskedTextBox();
-            this.lblDataPedidoConsl = new System.Windows.Forms.Label();
-            this.rdbTelefone = new System.Windows.Forms.RadioButton();
-            this.rdbData = new System.Windows.Forms.RadioButton();
+            this.gpProdutosPedidos = new System.Windows.Forms.GroupBox();
+            this.btnRemoverProduto = new System.Windows.Forms.Button();
+            this.dgvProdutos = new System.Windows.Forms.DataGridView();
+            this.btnIncluirProdutos = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dgvProdutosPedidos = new System.Windows.Forms.DataGridView();
+            this.lblListaProdutos = new System.Windows.Forms.Label();
+            this.btnSalvarProduto = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
             this.gpPedidos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListaProdutos)).BeginInit();
             this.gpProdutosPedidos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosPedidos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListaProdutos)).BeginInit();
             this.SuspendLayout();
             // 
             // lblHorario
@@ -105,17 +105,6 @@
             this.lblData.Name = "lblData";
             this.lblData.Size = new System.Drawing.Size(0, 21);
             this.lblData.TabIndex = 1;
-            // 
-            // txtValorTotal
-            // 
-            this.txtValorTotal.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtValorTotal.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.txtValorTotal.Enabled = false;
-            this.txtValorTotal.Location = new System.Drawing.Point(719, 240);
-            this.txtValorTotal.Name = "txtValorTotal";
-            this.txtValorTotal.Size = new System.Drawing.Size(105, 26);
-            this.txtValorTotal.TabIndex = 12;
-            this.txtValorTotal.TabStop = false;
             // 
             // txtConsTel
             // 
@@ -224,6 +213,56 @@
             this.timer1.Interval = 1;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // txtConsData
+            // 
+            this.txtConsData.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtConsData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtConsData.Font = new System.Drawing.Font("Arial", 12F);
+            this.txtConsData.Location = new System.Drawing.Point(297, 49);
+            this.txtConsData.Mask = "00/00/0000";
+            this.txtConsData.Name = "txtConsData";
+            this.txtConsData.Size = new System.Drawing.Size(151, 26);
+            this.txtConsData.TabIndex = 21;
+            this.txtConsData.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtConsData.ValidatingType = typeof(System.DateTime);
+            // 
+            // lblDataPedidoConsl
+            // 
+            this.lblDataPedidoConsl.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblDataPedidoConsl.AutoSize = true;
+            this.lblDataPedidoConsl.BackColor = System.Drawing.Color.Transparent;
+            this.lblDataPedidoConsl.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDataPedidoConsl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblDataPedidoConsl.Location = new System.Drawing.Point(308, 28);
+            this.lblDataPedidoConsl.Name = "lblDataPedidoConsl";
+            this.lblDataPedidoConsl.Size = new System.Drawing.Size(127, 21);
+            this.lblDataPedidoConsl.TabIndex = 22;
+            this.lblDataPedidoConsl.Text = "Data do Pedido";
+            // 
+            // rdbTelefone
+            // 
+            this.rdbTelefone.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.rdbTelefone.AutoSize = true;
+            this.rdbTelefone.Location = new System.Drawing.Point(94, 57);
+            this.rdbTelefone.Name = "rdbTelefone";
+            this.rdbTelefone.Size = new System.Drawing.Size(14, 13);
+            this.rdbTelefone.TabIndex = 23;
+            this.rdbTelefone.TabStop = true;
+            this.rdbTelefone.UseVisualStyleBackColor = true;
+            this.rdbTelefone.CheckedChanged += new System.EventHandler(this.rdbTelefone_CheckedChanged);
+            // 
+            // rdbData
+            // 
+            this.rdbData.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.rdbData.AutoSize = true;
+            this.rdbData.Location = new System.Drawing.Point(277, 55);
+            this.rdbData.Name = "rdbData";
+            this.rdbData.Size = new System.Drawing.Size(14, 13);
+            this.rdbData.TabIndex = 24;
+            this.rdbData.TabStop = true;
+            this.rdbData.UseVisualStyleBackColor = true;
+            this.rdbData.CheckedChanged += new System.EventHandler(this.rdbData_CheckedChanged);
+            // 
             // gpPedidos
             // 
             this.gpPedidos.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -254,146 +293,24 @@
             this.gpPedidos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.gpPedidos.Font = new System.Drawing.Font("Arial", 12F);
             this.gpPedidos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.gpPedidos.Location = new System.Drawing.Point(10, 74);
+            this.gpPedidos.Location = new System.Drawing.Point(11, 32);
             this.gpPedidos.Name = "gpPedidos";
             this.gpPedidos.Size = new System.Drawing.Size(958, 331);
-            this.gpPedidos.TabIndex = 20;
+            this.gpPedidos.TabIndex = 25;
             this.gpPedidos.TabStop = false;
             this.gpPedidos.Text = " Cadastrar Pedido";
             this.gpPedidos.Visible = false;
             // 
-            // gpProdutosPedidos
+            // txtValorTotal
             // 
-            this.gpProdutosPedidos.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.gpProdutosPedidos.BackColor = System.Drawing.Color.LightBlue;
-            this.gpProdutosPedidos.Controls.Add(this.btnRemoverProduto);
-            this.gpProdutosPedidos.Controls.Add(this.dgvProdutos);
-            this.gpProdutosPedidos.Controls.Add(this.btnIncluirProdutos);
-            this.gpProdutosPedidos.Controls.Add(this.label6);
-            this.gpProdutosPedidos.Controls.Add(this.dgvProdutosPedidos);
-            this.gpProdutosPedidos.Controls.Add(this.lblListaProdutos);
-            this.gpProdutosPedidos.Controls.Add(this.btnSalvarProduto);
-            this.gpProdutosPedidos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.gpProdutosPedidos.Font = new System.Drawing.Font("Arial", 12F);
-            this.gpProdutosPedidos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.gpProdutosPedidos.Location = new System.Drawing.Point(26, 26);
-            this.gpProdutosPedidos.Name = "gpProdutosPedidos";
-            this.gpProdutosPedidos.Size = new System.Drawing.Size(913, 305);
-            this.gpProdutosPedidos.TabIndex = 50;
-            this.gpProdutosPedidos.TabStop = false;
-            this.gpProdutosPedidos.Text = "Lista de Produtos";
-            this.gpProdutosPedidos.Visible = false;
-            // 
-            // btnRemoverProduto
-            // 
-            this.btnRemoverProduto.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnRemoverProduto.BackColor = System.Drawing.Color.LightCoral;
-            this.btnRemoverProduto.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.btnRemoverProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoverProduto.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoverProduto.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnRemoverProduto.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverProduto.Image")));
-            this.btnRemoverProduto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRemoverProduto.Location = new System.Drawing.Point(776, 198);
-            this.btnRemoverProduto.Name = "btnRemoverProduto";
-            this.btnRemoverProduto.Size = new System.Drawing.Size(106, 26);
-            this.btnRemoverProduto.TabIndex = 21;
-            this.btnRemoverProduto.Text = "Remover";
-            this.btnRemoverProduto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnRemoverProduto.UseVisualStyleBackColor = false;
-            this.btnRemoverProduto.Click += new System.EventHandler(this.btnRemoverProduto_Click);
-            // 
-            // dgvProdutos
-            // 
-            this.dgvProdutos.AllowUserToAddRows = false;
-            this.dgvProdutos.AllowUserToDeleteRows = false;
-            this.dgvProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvProdutos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProdutos.Location = new System.Drawing.Point(21, 46);
-            this.dgvProdutos.MaximumSize = new System.Drawing.Size(429, 206);
-            this.dgvProdutos.MinimumSize = new System.Drawing.Size(339, 106);
-            this.dgvProdutos.Name = "dgvProdutos";
-            this.dgvProdutos.ReadOnly = true;
-            this.dgvProdutos.Size = new System.Drawing.Size(416, 146);
-            this.dgvProdutos.TabIndex = 47;
-            this.dgvProdutos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.IncluirProdutos_ClickSelector);
-            // 
-            // btnIncluirProdutos
-            // 
-            this.btnIncluirProdutos.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnIncluirProdutos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(189)))), ((int)(((byte)(12)))));
-            this.btnIncluirProdutos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnIncluirProdutos.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.btnIncluirProdutos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIncluirProdutos.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIncluirProdutos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnIncluirProdutos.Image = ((System.Drawing.Image)(resources.GetObject("btnIncluirProdutos.Image")));
-            this.btnIncluirProdutos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIncluirProdutos.Location = new System.Drawing.Point(34, 198);
-            this.btnIncluirProdutos.Name = "btnIncluirProdutos";
-            this.btnIncluirProdutos.Size = new System.Drawing.Size(106, 26);
-            this.btnIncluirProdutos.TabIndex = 46;
-            this.btnIncluirProdutos.Text = "Incluir";
-            this.btnIncluirProdutos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnIncluirProdutos.UseVisualStyleBackColor = false;
-            this.btnIncluirProdutos.Click += new System.EventHandler(this.btnIncluirProdutos_Click);
-            // 
-            // label6
-            // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(462, 25);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(134, 18);
-            this.label6.TabIndex = 33;
-            this.label6.Text = "Produtos Pedidos";
-            // 
-            // dgvProdutosPedidos
-            // 
-            this.dgvProdutosPedidos.AllowUserToAddRows = false;
-            this.dgvProdutosPedidos.AllowUserToDeleteRows = false;
-            this.dgvProdutosPedidos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvProdutosPedidos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvProdutosPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProdutosPedidos.Location = new System.Drawing.Point(476, 46);
-            this.dgvProdutosPedidos.MaximumSize = new System.Drawing.Size(429, 206);
-            this.dgvProdutosPedidos.MinimumSize = new System.Drawing.Size(339, 106);
-            this.dgvProdutosPedidos.Name = "dgvProdutosPedidos";
-            this.dgvProdutosPedidos.ReadOnly = true;
-            this.dgvProdutosPedidos.Size = new System.Drawing.Size(413, 146);
-            this.dgvProdutosPedidos.TabIndex = 32;
-            this.dgvProdutosPedidos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RemoverProdutosPedidos_ClickSelector);
-            this.dgvProdutosPedidos.Click += new System.EventHandler(this.timer1_Tick);
-            // 
-            // lblListaProdutos
-            // 
-            this.lblListaProdutos.AutoSize = true;
-            this.lblListaProdutos.Location = new System.Drawing.Point(20, 25);
-            this.lblListaProdutos.Name = "lblListaProdutos";
-            this.lblListaProdutos.Size = new System.Drawing.Size(157, 18);
-            this.lblListaProdutos.TabIndex = 31;
-            this.lblListaProdutos.Text = "Produtos Disponiveis";
-            // 
-            // btnSalvarProduto
-            // 
-            this.btnSalvarProduto.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnSalvarProduto.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnSalvarProduto.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.btnSalvarProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalvarProduto.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvarProduto.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSalvarProduto.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvarProduto.Image")));
-            this.btnSalvarProduto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalvarProduto.Location = new System.Drawing.Point(407, 257);
-            this.btnSalvarProduto.Name = "btnSalvarProduto";
-            this.btnSalvarProduto.Size = new System.Drawing.Size(103, 26);
-            this.btnSalvarProduto.TabIndex = 15;
-            this.btnSalvarProduto.Text = "Salvar";
-            this.btnSalvarProduto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSalvarProduto.UseVisualStyleBackColor = false;
-            this.btnSalvarProduto.Click += new System.EventHandler(this.btnSalvarProduto_Click);
+            this.txtValorTotal.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtValorTotal.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.txtValorTotal.Enabled = false;
+            this.txtValorTotal.Location = new System.Drawing.Point(719, 240);
+            this.txtValorTotal.Name = "txtValorTotal";
+            this.txtValorTotal.Size = new System.Drawing.Size(105, 26);
+            this.txtValorTotal.TabIndex = 12;
+            this.txtValorTotal.TabStop = false;
             // 
             // cmbStatus
             // 
@@ -411,7 +328,7 @@
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(145, 26);
             this.cmbStatus.TabIndex = 48;
-            this.cmbStatus.SelectedIndexChanged += new System.EventHandler(this.cmbStatus_SelectedIndexChanged);
+            this.cmbStatus.Click += new System.EventHandler(this.cmbStatus_SelectedIndexChanged);
             // 
             // lblDetalhes
             // 
@@ -519,6 +436,7 @@
             this.dgvListaProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvListaProdutos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvListaProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListaProdutos.Enabled = false;
             this.dgvListaProdutos.Location = new System.Drawing.Point(495, 105);
             this.dgvListaProdutos.MaximumSize = new System.Drawing.Size(436, 104);
             this.dgvListaProdutos.MinimumSize = new System.Drawing.Size(336, 104);
@@ -631,7 +549,7 @@
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSalvar.UseVisualStyleBackColor = false;
-            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvarPedido_Click);
             // 
             // lblNomePedido
             // 
@@ -653,55 +571,137 @@
             this.txtNomePedido.Size = new System.Drawing.Size(495, 26);
             this.txtNomePedido.TabIndex = 1;
             // 
-            // txtConsData
+            // gpProdutosPedidos
             // 
-            this.txtConsData.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtConsData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtConsData.Font = new System.Drawing.Font("Arial", 12F);
-            this.txtConsData.Location = new System.Drawing.Point(297, 49);
-            this.txtConsData.Mask = "00/00/0000";
-            this.txtConsData.Name = "txtConsData";
-            this.txtConsData.Size = new System.Drawing.Size(151, 26);
-            this.txtConsData.TabIndex = 21;
-            this.txtConsData.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtConsData.ValidatingType = typeof(System.DateTime);
+            this.gpProdutosPedidos.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.gpProdutosPedidos.BackColor = System.Drawing.Color.LightBlue;
+            this.gpProdutosPedidos.Controls.Add(this.btnRemoverProduto);
+            this.gpProdutosPedidos.Controls.Add(this.dgvProdutos);
+            this.gpProdutosPedidos.Controls.Add(this.btnIncluirProdutos);
+            this.gpProdutosPedidos.Controls.Add(this.label6);
+            this.gpProdutosPedidos.Controls.Add(this.dgvProdutosPedidos);
+            this.gpProdutosPedidos.Controls.Add(this.lblListaProdutos);
+            this.gpProdutosPedidos.Controls.Add(this.btnSalvarProduto);
+            this.gpProdutosPedidos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.gpProdutosPedidos.Font = new System.Drawing.Font("Arial", 12F);
+            this.gpProdutosPedidos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.gpProdutosPedidos.Location = new System.Drawing.Point(25, 25);
+            this.gpProdutosPedidos.Name = "gpProdutosPedidos";
+            this.gpProdutosPedidos.Size = new System.Drawing.Size(913, 305);
+            this.gpProdutosPedidos.TabIndex = 50;
+            this.gpProdutosPedidos.TabStop = false;
+            this.gpProdutosPedidos.Text = "Lista de Produtos";
+            this.gpProdutosPedidos.Visible = false;
             // 
-            // lblDataPedidoConsl
+            // btnRemoverProduto
             // 
-            this.lblDataPedidoConsl.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblDataPedidoConsl.AutoSize = true;
-            this.lblDataPedidoConsl.BackColor = System.Drawing.Color.Transparent;
-            this.lblDataPedidoConsl.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataPedidoConsl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblDataPedidoConsl.Location = new System.Drawing.Point(308, 28);
-            this.lblDataPedidoConsl.Name = "lblDataPedidoConsl";
-            this.lblDataPedidoConsl.Size = new System.Drawing.Size(127, 21);
-            this.lblDataPedidoConsl.TabIndex = 22;
-            this.lblDataPedidoConsl.Text = "Data do Pedido";
+            this.btnRemoverProduto.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnRemoverProduto.BackColor = System.Drawing.Color.LightCoral;
+            this.btnRemoverProduto.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.btnRemoverProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoverProduto.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoverProduto.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnRemoverProduto.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverProduto.Image")));
+            this.btnRemoverProduto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRemoverProduto.Location = new System.Drawing.Point(786, 197);
+            this.btnRemoverProduto.Name = "btnRemoverProduto";
+            this.btnRemoverProduto.Size = new System.Drawing.Size(106, 26);
+            this.btnRemoverProduto.TabIndex = 21;
+            this.btnRemoverProduto.Text = "Remover";
+            this.btnRemoverProduto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRemoverProduto.UseVisualStyleBackColor = false;
+            this.btnRemoverProduto.Click += new System.EventHandler(this.btnRemoverProduto_Click);
             // 
-            // rdbTelefone
+            // dgvProdutos
             // 
-            this.rdbTelefone.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.rdbTelefone.AutoSize = true;
-            this.rdbTelefone.Location = new System.Drawing.Point(94, 57);
-            this.rdbTelefone.Name = "rdbTelefone";
-            this.rdbTelefone.Size = new System.Drawing.Size(14, 13);
-            this.rdbTelefone.TabIndex = 23;
-            this.rdbTelefone.TabStop = true;
-            this.rdbTelefone.UseVisualStyleBackColor = true;
-            this.rdbTelefone.CheckedChanged += new System.EventHandler(this.rdbTelefone_CheckedChanged);
+            this.dgvProdutos.AllowUserToAddRows = false;
+            this.dgvProdutos.AllowUserToDeleteRows = false;
+            this.dgvProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvProdutos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProdutos.Location = new System.Drawing.Point(21, 46);
+            this.dgvProdutos.MaximumSize = new System.Drawing.Size(429, 206);
+            this.dgvProdutos.MinimumSize = new System.Drawing.Size(339, 106);
+            this.dgvProdutos.Name = "dgvProdutos";
+            this.dgvProdutos.ReadOnly = true;
+            this.dgvProdutos.Size = new System.Drawing.Size(416, 146);
+            this.dgvProdutos.TabIndex = 47;
+            this.dgvProdutos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SelecionarProdutoIncluir_ClickSelector);
             // 
-            // rdbData
+            // btnIncluirProdutos
             // 
-            this.rdbData.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.rdbData.AutoSize = true;
-            this.rdbData.Location = new System.Drawing.Point(277, 55);
-            this.rdbData.Name = "rdbData";
-            this.rdbData.Size = new System.Drawing.Size(14, 13);
-            this.rdbData.TabIndex = 24;
-            this.rdbData.TabStop = true;
-            this.rdbData.UseVisualStyleBackColor = true;
-            this.rdbData.CheckedChanged += new System.EventHandler(this.rdbData_CheckedChanged);
+            this.btnIncluirProdutos.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnIncluirProdutos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(189)))), ((int)(((byte)(12)))));
+            this.btnIncluirProdutos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnIncluirProdutos.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.btnIncluirProdutos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIncluirProdutos.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIncluirProdutos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnIncluirProdutos.Image = ((System.Drawing.Image)(resources.GetObject("btnIncluirProdutos.Image")));
+            this.btnIncluirProdutos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIncluirProdutos.Location = new System.Drawing.Point(21, 198);
+            this.btnIncluirProdutos.Name = "btnIncluirProdutos";
+            this.btnIncluirProdutos.Size = new System.Drawing.Size(106, 26);
+            this.btnIncluirProdutos.TabIndex = 46;
+            this.btnIncluirProdutos.Text = "Incluir";
+            this.btnIncluirProdutos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnIncluirProdutos.UseVisualStyleBackColor = false;
+            this.btnIncluirProdutos.Click += new System.EventHandler(this.btnIncluirProdutos_Click);
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(476, 25);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(134, 18);
+            this.label6.TabIndex = 33;
+            this.label6.Text = "Produtos Pedidos";
+            // 
+            // dgvProdutosPedidos
+            // 
+            this.dgvProdutosPedidos.AllowUserToAddRows = false;
+            this.dgvProdutosPedidos.AllowUserToDeleteRows = false;
+            this.dgvProdutosPedidos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvProdutosPedidos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProdutosPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProdutosPedidos.Location = new System.Drawing.Point(479, 45);
+            this.dgvProdutosPedidos.MaximumSize = new System.Drawing.Size(429, 206);
+            this.dgvProdutosPedidos.MinimumSize = new System.Drawing.Size(339, 106);
+            this.dgvProdutosPedidos.Name = "dgvProdutosPedidos";
+            this.dgvProdutosPedidos.ReadOnly = true;
+            this.dgvProdutosPedidos.Size = new System.Drawing.Size(413, 146);
+            this.dgvProdutosPedidos.TabIndex = 32;
+            this.dgvProdutosPedidos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SelecionarProdutosRemover_ClickSelector);
+            // 
+            // lblListaProdutos
+            // 
+            this.lblListaProdutos.AutoSize = true;
+            this.lblListaProdutos.Location = new System.Drawing.Point(20, 25);
+            this.lblListaProdutos.Name = "lblListaProdutos";
+            this.lblListaProdutos.Size = new System.Drawing.Size(157, 18);
+            this.lblListaProdutos.TabIndex = 31;
+            this.lblListaProdutos.Text = "Produtos Disponiveis";
+            // 
+            // btnSalvarProduto
+            // 
+            this.btnSalvarProduto.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnSalvarProduto.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnSalvarProduto.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.btnSalvarProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalvarProduto.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalvarProduto.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSalvarProduto.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvarProduto.Image")));
+            this.btnSalvarProduto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSalvarProduto.Location = new System.Drawing.Point(406, 258);
+            this.btnSalvarProduto.Name = "btnSalvarProduto";
+            this.btnSalvarProduto.Size = new System.Drawing.Size(103, 26);
+            this.btnSalvarProduto.TabIndex = 15;
+            this.btnSalvarProduto.Text = "Salvar";
+            this.btnSalvarProduto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSalvarProduto.UseVisualStyleBackColor = false;
+            this.btnSalvarProduto.Click += new System.EventHandler(this.btnSalvarProduto_Click);
             // 
             // FrmPedidos
             // 
@@ -710,11 +710,11 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(980, 395);
+            this.Controls.Add(this.gpPedidos);
             this.Controls.Add(this.rdbData);
             this.Controls.Add(this.rdbTelefone);
             this.Controls.Add(this.txtConsData);
             this.Controls.Add(this.lblDataPedidoConsl);
-            this.Controls.Add(this.gpPedidos);
             this.Controls.Add(this.txtConsTel);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnCadastrar);
@@ -734,11 +734,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).EndInit();
             this.gpPedidos.ResumeLayout(false);
             this.gpPedidos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListaProdutos)).EndInit();
             this.gpProdutosPedidos.ResumeLayout(false);
             this.gpProdutosPedidos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosPedidos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListaProdutos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -755,8 +755,29 @@
         private System.Windows.Forms.Button btnConsultar;
         private System.Windows.Forms.Label lblConsultTel;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.MaskedTextBox txtConsData;
+        private System.Windows.Forms.Label lblDataPedidoConsl;
+        private System.Windows.Forms.RadioButton rdbTelefone;
+        private System.Windows.Forms.RadioButton rdbData;
         private System.Windows.Forms.GroupBox gpPedidos;
+        private System.Windows.Forms.GroupBox gpProdutosPedidos;
+        private System.Windows.Forms.Button btnRemoverProduto;
+        private System.Windows.Forms.DataGridView dgvProdutos;
+        private System.Windows.Forms.Button btnIncluirProdutos;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridView dgvProdutosPedidos;
+        private System.Windows.Forms.Label lblListaProdutos;
+        private System.Windows.Forms.Button btnSalvarProduto;
         private System.Windows.Forms.TextBox txtValorTotal;
+        private System.Windows.Forms.ComboBox cmbStatus;
+        private System.Windows.Forms.Label lblDetalhes;
+        private System.Windows.Forms.Button btnMaisProdutos;
+        private System.Windows.Forms.Label lblValor;
+        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Label lblDtEntrega;
+        private System.Windows.Forms.Label lblDtEfetuada;
+        private System.Windows.Forms.TextBox txtDtEntrega;
+        private System.Windows.Forms.TextBox txtDtEfetuada;
         private System.Windows.Forms.Label lblProdutosPedidos;
         private System.Windows.Forms.DataGridView dgvListaProdutos;
         private System.Windows.Forms.Label lblObservacao;
@@ -769,26 +790,5 @@
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Label lblNomePedido;
         private System.Windows.Forms.TextBox txtNomePedido;
-        private System.Windows.Forms.Button btnMaisProdutos;
-        private System.Windows.Forms.Label lblValor;
-        private System.Windows.Forms.Label lblStatus;
-        private System.Windows.Forms.Label lblDtEntrega;
-        private System.Windows.Forms.Label lblDtEfetuada;
-        private System.Windows.Forms.TextBox txtDtEntrega;
-        private System.Windows.Forms.TextBox txtDtEfetuada;
-        private System.Windows.Forms.Label lblDetalhes;
-        private System.Windows.Forms.ComboBox cmbStatus;
-        private System.Windows.Forms.GroupBox gpProdutosPedidos;
-        private System.Windows.Forms.Button btnRemoverProduto;
-        private System.Windows.Forms.DataGridView dgvProdutos;
-        private System.Windows.Forms.Button btnIncluirProdutos;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridView dgvProdutosPedidos;
-        private System.Windows.Forms.Label lblListaProdutos;
-        private System.Windows.Forms.Button btnSalvarProduto;
-        private System.Windows.Forms.MaskedTextBox txtConsData;
-        private System.Windows.Forms.Label lblDataPedidoConsl;
-        private System.Windows.Forms.RadioButton rdbTelefone;
-        private System.Windows.Forms.RadioButton rdbData;
     }
 }

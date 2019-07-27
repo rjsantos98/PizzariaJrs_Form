@@ -25,7 +25,7 @@ namespace UI
         private Cliente cliente;
         private BindingList<ProdutoPedido> listarProdutosPedidos;
         string dia, mes, ano, hora, minuto, segundo;
-
+        int modo = 0;
         public FrmPedidos(Form frmPrincipal)
         {
             InitializeComponent();
@@ -89,7 +89,7 @@ namespace UI
             txtNomePedido.Text = cliente.Nome;
             if (txtTelefonePedido.Text is null || txtTelefonePedido.Text == "")
                 MessageBox.Show("Digite um número de telefone para pesquisa");
-            else if(txtNomePedido.Text is null || txtNomePedido.Text == "")
+            else if (txtNomePedido.Text is null || txtNomePedido.Text == "")
                 MessageBox.Show("O número de informado não existe ou está incorreto");
         }
 
@@ -138,7 +138,8 @@ namespace UI
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            if (gpPedidos.Text == "Cadastrar Pedido") {
+            if (gpPedidos.Text == "Cadastrar Pedido")
+            {
                 if (MessageBox.Show("Deseja cancelar o pedido?", "Atenção",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -166,7 +167,7 @@ namespace UI
 
         private void btnMaisProdutos_Click(object sender, EventArgs e)
         {
-            if(txtNomePedido.Text == "" || txtNomePedido.Text == null)
+            if (txtNomePedido.Text == "" || txtNomePedido.Text == null)
             {
                 MessageBox.Show("Selecione o cliente");
             }
@@ -205,75 +206,87 @@ namespace UI
 
         private void btnSalvarProduto_Click(object sender, EventArgs e)
         {
+            modo = 0;
+            produtoPedido = new ProdutoPedido();
             gpProdutosPedidos.Hide();
             GridListarProdutos();
         }
 
         private void btnIncluirProdutos_Click(object sender, EventArgs e)
         {
-            if (produtoPedido == null || produtoPedido is null)
+            if (modo != 1)
                 MessageBox.Show("Selecione um produto para incluir");
             else
             {
-                bool existe = false;
-                foreach (ProdutoPedido produtoInclude in listarProdutosPedidos)
+                if (produtoPedido == null || produtoPedido is null || produtoPedido.Produto.ID == 0)
+                    MessageBox.Show("Selecione um produto para incluir");
+                else
                 {
-                    if (produtoInclude.Produto.ID == produtoPedido.Produto.ID)
+                    bool existe = false;
+                    foreach (ProdutoPedido produtoInclude in listarProdutosPedidos)
                     {
-                        existe = true;
-                        produtoInclude.Quantidade += 1;
-                        produtoInclude.Valor = produtoPedido.Produto.Valor * produtoInclude.Quantidade;
-                        break;
+                        if (produtoInclude.Produto.ID == produtoPedido.Produto.ID)
+                        {
+                            existe = true;
+                            produtoInclude.Quantidade += 1;
+                            produtoInclude.Valor = produtoPedido.Produto.Valor * produtoInclude.Quantidade;
+                            break;
+                        }
+                        else
+                        {
+                            existe = false;
+                        }
                     }
-                    else
+                    if (listarProdutosPedidos.Count < 1)
                     {
                         existe = false;
                     }
+                    if (existe == false)
+                    {
+                        listarProdutosPedidos.Add(produtoPedido);
+                    }
+                    dgvProdutosPedidos.DataSource = null;
+                    dgvProdutosPedidos.DataSource = listarProdutosPedidos;
+                    dgvProdutosPedidos.Columns["Valor"].DefaultCellStyle.Format = "C2";
+                    dgvProdutosPedidos.Columns["Pedido"].Visible = false;
                 }
-                if (listarProdutosPedidos.Count < 1)
-                {
-                    existe = false;
-                }
-                if (existe == false)
-                {
-                    listarProdutosPedidos.Add(produtoPedido);
-                }
-                dgvProdutosPedidos.DataSource = null;
-                dgvProdutosPedidos.DataSource = listarProdutosPedidos;
-                dgvProdutosPedidos.Columns["Valor"].DefaultCellStyle.Format = "C2";
-                dgvProdutosPedidos.Columns["Pedido"].Visible = false;
             }
         }
 
         private void btnRemoverProduto_Click(object sender, EventArgs e)
         {
-            if (produtoPedido == null || produtoPedido is null)
+            if (modo != 2)
                 MessageBox.Show("Selecione um produto para remover");
             else
             {
-                int i = -1;
-                foreach (ProdutoPedido prod in listarProdutosPedidos)
+                if (produtoPedido == null || produtoPedido is null || produtoPedido.Produto.Nome == "")
+                    MessageBox.Show("Selecione um produto para remover");
+                else
                 {
-                    if (prod.Produto.Nome == produtoPedido.Produto.Nome)
+                    int i = -1;
+                    foreach (ProdutoPedido prod in listarProdutosPedidos)
                     {
-                        i = listarProdutosPedidos.IndexOf(prod);
-                        double valor = prod.Valor / prod.Quantidade;
-                        if (prod.Quantidade > 1)
+                        if (prod.Produto.Nome == produtoPedido.Produto.Nome)
                         {
-                            prod.Quantidade -= 1;
-                            prod.Valor = valor * prod.Quantidade;
+                            i = listarProdutosPedidos.IndexOf(prod);
+                            double valor = prod.Valor / prod.Quantidade;
+                            if (prod.Quantidade > 1)
+                            {
+                                prod.Quantidade -= 1;
+                                prod.Valor = valor * prod.Quantidade;
+                            }
+                            else
+                            {
+                                listarProdutosPedidos.RemoveAt(i);
+                            }
+                            break;
                         }
-                        else
-                        {
-                            listarProdutosPedidos.RemoveAt(i);
-                        }
-                        break;
                     }
+                    dgvProdutosPedidos.DataSource = null;
+                    dgvProdutosPedidos.DataSource = listarProdutosPedidos;
+                    dgvProdutosPedidos.Columns["Valor"].DefaultCellStyle.Format = "C2";
+                    dgvProdutosPedidos.Columns["Pedido"].Visible = false;
                 }
-                dgvProdutosPedidos.DataSource = null;
-                dgvProdutosPedidos.DataSource = listarProdutosPedidos;
-                dgvProdutosPedidos.Columns["Valor"].DefaultCellStyle.Format = "C2";
-                dgvProdutosPedidos.Columns["Pedido"].Visible = false;
             }
         }
         private void GridProdutos()
@@ -286,6 +299,7 @@ namespace UI
         }
         private void SelecionarProdutoIncluir_ClickSelector(object sender, DataGridViewCellEventArgs e)
         {
+            modo = 1;
             produtoPedido = new ProdutoPedido();
             produtoPedido.Pedido.ID = Convert.ToInt32(txtID.Text);
             produtoPedido.Produto.ID = Convert.ToInt32(dgvProdutos.Rows[e.RowIndex].Cells[0].Value);
@@ -296,6 +310,7 @@ namespace UI
         }
         private void SelecionarProdutosRemover_ClickSelector(object sender, DataGridViewCellEventArgs e)
         {
+            modo = 2;
             produtoPedido = new ProdutoPedido();
             produtoPedido.Pedido.ID = Convert.ToInt32(txtID.Text);
             produtoPedido.Produto.Nome = Convert.ToString(dgvProdutosPedidos.Rows[e.RowIndex].Cells[1].Value);

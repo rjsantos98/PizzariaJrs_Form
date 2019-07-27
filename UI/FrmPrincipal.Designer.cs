@@ -46,7 +46,7 @@
             this.picProdutos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picProdutos.BackgroundImage")));
             this.picProdutos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picProdutos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picProdutos.Location = new System.Drawing.Point(128, 34);
+            this.picProdutos.Location = new System.Drawing.Point(128, 100);
             this.picProdutos.Name = "picProdutos";
             this.picProdutos.Size = new System.Drawing.Size(120, 117);
             this.picProdutos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -60,7 +60,7 @@
             this.picClientes.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picClientes.BackgroundImage")));
             this.picClientes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picClientes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picClientes.Location = new System.Drawing.Point(333, 34);
+            this.picClientes.Location = new System.Drawing.Point(333, 100);
             this.picClientes.Name = "picClientes";
             this.picClientes.Size = new System.Drawing.Size(120, 117);
             this.picClientes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -74,7 +74,7 @@
             this.picPedidos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picPedidos.BackgroundImage")));
             this.picPedidos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picPedidos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picPedidos.Location = new System.Drawing.Point(538, 34);
+            this.picPedidos.Location = new System.Drawing.Point(537, 100);
             this.picPedidos.Name = "picPedidos";
             this.picPedidos.Size = new System.Drawing.Size(120, 117);
             this.picPedidos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -89,7 +89,7 @@
             this.lblProdutos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblProdutos.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProdutos.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lblProdutos.Location = new System.Drawing.Point(145, 154);
+            this.lblProdutos.Location = new System.Drawing.Point(145, 220);
             this.lblProdutos.Name = "lblProdutos";
             this.lblProdutos.Size = new System.Drawing.Size(85, 21);
             this.lblProdutos.TabIndex = 3;
@@ -104,7 +104,7 @@
             this.lblClientes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblClientes.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClientes.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lblClientes.Location = new System.Drawing.Point(355, 154);
+            this.lblClientes.Location = new System.Drawing.Point(355, 220);
             this.lblClientes.Name = "lblClientes";
             this.lblClientes.Size = new System.Drawing.Size(76, 21);
             this.lblClientes.TabIndex = 4;
@@ -119,7 +119,7 @@
             this.lblPedidos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblPedidos.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPedidos.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lblPedidos.Location = new System.Drawing.Point(561, 154);
+            this.lblPedidos.Location = new System.Drawing.Point(561, 225);
             this.lblPedidos.Name = "lblPedidos";
             this.lblPedidos.Size = new System.Drawing.Size(73, 21);
             this.lblPedidos.TabIndex = 5;

@@ -159,5 +159,13 @@ namespace UI
             gpClientes.Text = "Alterar Cliente";
             gpClientes.Show();
         }
+
+        private void SearchCEP(object sender, EventArgs e)
+        {
+            var ws = new WSCorreios.AtendeClienteClient();
+            var resposta = ws.consultaCEP(txtCEP.Text);
+            txtEndereco.Text = resposta.end;
+            txtBairro.Text = resposta.bairro;
+        }
     }
 }

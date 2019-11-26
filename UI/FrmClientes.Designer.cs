@@ -192,6 +192,7 @@
             this.txtCEP.TabIndex = 3;
             this.txtCEP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtCEP.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.txtCEP.Leave += new System.EventHandler(this.SearchCEP);
             // 
             // label6
             // 
